@@ -12,7 +12,18 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+        <table class="layout-table">
+      <tr class="layout-content-row">
+        <td class="layout-content-column">
+          <%= yield %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= render 'shared/footer' %>
+        </td>
+      </tr>
+    </table>
 
     <%= javascript_pack_tag 'application' %>
   </body>
