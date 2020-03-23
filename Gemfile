@@ -8,6 +8,7 @@ gem 'pg', '~> 0.21'
 gem 'puma', '>= 4.3.2'
 gem 'rails', '6.0.2.1'
 gem 'redis'
+gem 'cloudinary'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
@@ -21,6 +22,7 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'dotenv-rails'
 end
 
 group :development, :test do
