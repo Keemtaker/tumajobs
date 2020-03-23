@@ -6,12 +6,17 @@ class CompaniesController < ApplicationController
 
   def new
    @company = Company.new
+
   end
 
   def create
     @company = Company.new(company_params)
     @company.user = current_user
-    @company.save
+    if @company.save
+      redirect_to @company
+    else
+      render :new
+    end
   end
 
   def show
@@ -28,7 +33,7 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:name, :description, :website, :address, :location, :user_id)
+    params.require(:company).permit(:name, :description, :website, :address, :location, :logo, :user_id, perk_ids:[])
   end
 
 end

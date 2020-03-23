@@ -20,8 +20,40 @@
         <%= f.input :address, :label => "Address" %>
       </div>
     </div>
+
+    <div class="form-group">
+      <label class="col-md-1 control-label"></label>
+      <div class="col-md-9">
+        <%= f.input :logo, as: :file %>
+      </div>
+    </div>
+
+    <br>
+    <h1>Perks & Benefits</h1>
+    <br>
+    <p1>Select perks and benefits that your company offers to employees</p1>
+    <br>
+    <br>
+    <div class="form-group">
+      <div class="col-md-9">
+        <div class="row">
+          <% Perk.all.each do |perk| %>
+            <input style="display: none", class="hidden", type="checkbox", value="<%= perk.id %>" name="company[perk_ids][]" id="company_perk_ids_<%= perk.id %>"/>
+            <div class="col-md-4 perk-choices">
+              <label class="perk-choice" for="company_perk_ids_<%= perk.id %>">
+                <i class="<%= perk.icon %>" aria-hidden="true"></i>
+                <br>
+                <%= perk.name %>
+              </label>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
     <div class="form-actions">
       <%= f.button :submit, "Submit", class: "btn btn-primary" %>
     </div>
   </div>
 <% end %>
+

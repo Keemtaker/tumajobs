@@ -1,0 +1,35 @@
+.perk-choices {
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.perk-choice {
+  cursor: pointer;
+  &.active {
+  background: #51ADCF;
+  color: white;
+  opacity: 1;
+  cursor: pointer;
+
+  }
+}
+
+.job-card {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 10px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.show-logo {
+  width: 80px;
+  border-radius: 50%;
+}
+
