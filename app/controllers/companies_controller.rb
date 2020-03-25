@@ -30,6 +30,11 @@ class CompaniesController < ApplicationController
   def update
     edit
     @company.update(company_params)
+    if @company.update(company_params)
+      redirect_to @company
+    else
+      render :edit
+    end
   end
 
   def company_params
