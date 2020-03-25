@@ -45,9 +45,9 @@
       <div class="col-md-9">
         <div class="row">
           <% Perk.all.each do |perk| %>
-            <input style="display: none", class="hidden", type="checkbox", value="<%= perk.id %>" name="company[perk_ids][]" id="company_perk_ids_<%= perk.id %>"/>
+            <input style="display: none", class="hidden", type="checkbox", value="<%= perk.id %>" name="company[perk_ids][]" id="company_perk_ids_<%= perk.id %>" <%= "checked" if @company.perk_ids.include? perk.id %> />
             <div class="col-md-4 perk-choices">
-              <label class="perk-choice" for="company_perk_ids_<%= perk.id %>">
+              <label class="perk-choice <%= "active" if @company.perk_ids.include? perk.id %>" for="company_perk_ids_<%= perk.id %>">
                 <i class="<%= perk.icon %>" aria-hidden="true"></i>
                 <br>
                 <%= perk.name %>
@@ -64,13 +64,3 @@
   </div>
 <% end %>
 
-<div class="container">
-
-<%= form_with(model: @company) do |form| %>
-    <%= form.label :description %>
-    <%= form.rich_text_area :description %>
-<% end %>
-</div>
-<br>
-<br>
-<br>
