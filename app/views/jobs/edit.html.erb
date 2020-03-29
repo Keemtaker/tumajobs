@@ -20,6 +20,14 @@
     <div class="form-group">
       <label class="col-md-1 control-label"></label>
       <div class="col-md-9">
+        <%= f.input :role, collection: ["Software & IT", "Accounting & Finance", "Marketing & Sales", "Engineer", "Health", "Education", "Designer", "Business Developer",
+        "Office Administration", "Customer Service", "Project Management", "Banking & Investment", "Consulting", "Other"], :label => "Role" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-1 control-label"></label>
+      <div class="col-md-9">
         <%= f.input :location, :label => "Job location" %>
       </div>
     </div>
