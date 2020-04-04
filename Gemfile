@@ -19,6 +19,7 @@ gem 'webpacker'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'ransack'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

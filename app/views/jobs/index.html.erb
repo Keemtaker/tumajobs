@@ -1,28 +1,8 @@
 <br>
 <div class="container">
-  <div class="row perk-margin">
-    <div class="col-md-8">
-      <div class="jobs">
-        <% @jobs.each do |job| %>
-          <%= link_to company_job_path(job.company, job) do %>
-          <div class="job-bar">
-            <div class="logo">
-                <%= cl_image_tag job.company.logo.key, class: "company-logo" %>
-            </div>
-            <div class="text">
-              <div class="job-title">
-                <%= job.title %>
-              </div>
-              <span>
-                <h5 class="job-info" style="color: #5DB1D1;"><%= job.company.name %></h5>
-                <h5 class="job-info"><%= job.location %></h5>
-                <h5 class="job-info"><%= job.job_type %></h5>
-              </span>
-            </div>
-          </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'jobs/partials/index/job_filters_mobile' %>
+  <div class="row">
+    <%= render 'jobs/partials/index/job_filters' %>
+    <%= render 'jobs/partials/index/jobs' %>
   </div>
 </div>
