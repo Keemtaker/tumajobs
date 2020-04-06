@@ -14,6 +14,7 @@ require("bootstrap/dist/js/bootstrap")
 require("../perk")
 require("../search")
 require("../job_filters")
+require("../job_application_type")
 
 require("trix")
 require("@rails/actiontext")

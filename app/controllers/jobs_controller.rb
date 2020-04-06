@@ -6,8 +6,12 @@ class JobsController < ApplicationController
   end
 
   def new
-    @company = Company.find(params[:company_id])
-    @job = @company.jobs.new
+    if current_user
+      @company = Company.find(params[:company_id])
+      @job = @company.jobs.new
+    else
+      @job = Job.new
+    end
   end
 
   def create
@@ -44,7 +48,8 @@ class JobsController < ApplicationController
   end
 
   def job_params
-    params.require(:job).permit(:title, :description, :role, :job_type, :keywords, :salary, :location, :company_id)
+    params.require(:job).permit(:title, :description, :role, :job_type, :keywords, :salary, :location, :company_id, :unregistered_company_name, :unregistered_company_logo,
+    :job_application_type, :job_email, :job_url, perk_ids:[])
   end
 
 end
