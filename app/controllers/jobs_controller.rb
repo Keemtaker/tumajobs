@@ -15,13 +15,10 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = Job.new(job_params)
-    @company = params[:company_id]
-    @job.company_id = @company
-    if @job.save
-      redirect_to company_job_path(@company, @job)
+    if current_user
+      registered_company_job
     else
-      render :new
+      unregistered_company_job
     end
   end
 
@@ -46,6 +43,40 @@ class JobsController < ApplicationController
         render :edit
       end
   end
+
+  private
+
+  def registered_company_job
+    @job = Job.new(job_params)
+    @company =  params[:company_id]
+    @job.company_id = @company
+      if params[:previewButt] == "Preview"
+        flash[:alert] = "This is a PREVIEW of your job posting. Go back to the previous tab to Post the job or make edits."
+        render :create
+      elsif params[:createButt] == "Post Job"
+        @job.save
+        flash[:notice] = "Success!"
+        redirect_to company_job_path(@company, @job)
+      else
+        render :new
+      end
+  end
+
+  def unregistered_company_job
+    @job = Job.new(job_params)
+      if params[:previewButt] == "Preview"
+        # flash[:alert] = "This is a PREVIEW of your job posting. Go back to the previous tab to Post the job or make edits."
+        render :create
+      elsif
+        params[:createButt] == "Post Job"
+        @job.save
+        flash[:notice] = "Success!"
+        redirect_to @job
+      else
+        render :new
+      end
+  end
+
 
   def job_params
     params.require(:job).permit(:title, :description, :role, :job_type, :keywords, :salary, :location, :company_id, :unregistered_company_name, :unregistered_company_logo,

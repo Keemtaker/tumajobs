@@ -31,7 +31,7 @@
     <div class="form-group">
       <label class="col-md-1 control-label"></label>
       <div class="col-md-9">
-        <%= f.input :logo, as: :file %>
+        <%= f.input :logo %>
       </div>
     </div>
 
@@ -58,8 +58,14 @@
       </div>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Submit", class: "btn btn-primary" %>
+    <div class="form-group">
+      <label class="col-md-1 control-label"></label>
+      <div class="col-md-9 text-center" style="margin-top: 110px;">
+        <%= f.button :submit , name: "previewButt", value: "Preview", formtarget:"_blank", data: { disable_with: false } %>
+        <%= f.button :submit , name: "createButt", value: "Submit", class: "btn btn-success post-btn", data: { disable_with: false } %>
+      </div>
+      <div class="col-md-9" style="margin-top: 80px;">
+        <p style="color: gray;">Click <strong>Preview</strong> to see how your company profile would appear to applicants. The preview would open in a new tab. Return back to this page to <strong>Submit</strong> or make <strong>Edits</strong>.</p>
+      </div>
     </div>
-  </div>
 <% end %>
