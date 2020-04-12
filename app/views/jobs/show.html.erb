@@ -8,7 +8,7 @@
 </div>
 
   <div style="padding: 10px; background-color: white;" class="text-center">
-    <%= link_to "Edit job details", edit_company_job_path(@job.company, @job),  class: "btn btn-success btn-lg"%>
+    <%= link_to "Apply", new_job_job_candidate_path(@job), remote: true, class: "btn btn-success btn-lg" %>
   </div>
 
 <div class="container">
