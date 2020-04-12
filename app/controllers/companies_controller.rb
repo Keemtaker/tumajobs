@@ -5,18 +5,18 @@ class CompaniesController < ApplicationController
   end
 
   def new
-   @company = Company.new
-
+    if current_user.company
+      @company = current_user.company[:id]
+      redirect_to new_company_job_path(@company)
+    else
+      @company = Company.new
+    end
   end
 
   def create
     @company = Company.new(company_params)
     @company.user = current_user
-    if @company.save
-      redirect_to @company
-    else
-      render :new
-    end
+    preview_company
   end
 
   def show
@@ -34,6 +34,21 @@ class CompaniesController < ApplicationController
       redirect_to @company
     else
       render :edit
+    end
+  end
+
+  private
+
+  def preview_company
+    if params[:previewButt] == "Preview"
+      # flash[:alert] = "This is a PREVIEW of your company profile. Go back to the previous tab to Submit or make edits."
+      render :create
+    elsif params[:createButt] == "Submit"
+      @company.save
+      flash[:notice] = "Congrats on creating a company profile."
+      redirect_to @company
+    else
+      render :new
     end
   end
 
