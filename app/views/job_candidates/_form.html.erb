@@ -1,0 +1,19 @@
+<div id="contact-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= simple_form_for @job_candidate, :url => job_job_candidates_path(@job, @job_candidate), :method => :post do |f| %>
+        <div class="modal-body">
+          <%= f.input :full_name, label: "Full Name", :autofocus => true %>
+          <%= f.input :email, label: "Email" %>
+          <%= f.input :mobile_number, label: "Mobile Number" %>
+          <%= f.input :resume %>
+          <%= f.input :cover_letter %>
+          <%= f.submit 'Submit Application', class: "btn btn-success btn-lg btn-block upload-margin create-style"%>
+        </div>
+        <div class="modal-footer">
+          <span style="float: left; color: #5DB1D1;">Goodluck with your application<i class="fas fa-hand-peace" aria-hidden="true"></i></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
