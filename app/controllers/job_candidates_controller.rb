@@ -5,7 +5,7 @@ class JobCandidatesController < ApplicationController
   end
 
   def create
-    @job_candidate = Job.new(job_candidate_params)
+    @job_candidate = JobCandidate.new(job_candidate_params)
     @job =  params[:job_id]
     @job_candidate.job_id = @job
     @job_candidate.save
@@ -25,7 +25,7 @@ class JobCandidatesController < ApplicationController
   private
 
   def job_candidate_params
-    params.require(:JobCandidate).permit(:full_name, :email, :mobile_number, :resume,
+    params.require(:job_candidate).permit(:full_name, :email, :mobile_number, :resume,
       :job_id, :cover_letter)
   end
 end
