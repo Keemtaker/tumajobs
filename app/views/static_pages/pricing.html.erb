@@ -1,0 +1,46 @@
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto">
+  <h1 class="display-4">Recruitment Options</h1>
+  <br>
+  <p class="lead">Life would be boring without options. Here at TumaJobs, we recognize that and provide customers with 2 recruitment options.</p>
+  <br>
+  <p class="lead">The first product type, <%= link_to "Registered Account Job", new_user_registration_path %>, involves creating a <strong>Company Profile/Account</strong> and
+  posting a job.</p>
+  <br>
+  <p class="lead">If you are pressed for time, our second product type, <%= link_to "Quick Job", new_job_path %> is the best option.
+  You can post a job without creating a <strong>Company Profile/Account</strong>.</p>
+</div>
+
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Registered Account Job</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">Free</h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Sign-up Required</li>
+          <li>Unlimited Job Postings</li>
+          <li>Company Profile</li>
+          <li>40 days Job duration</li>
+        </ul>
+        <%= link_to "Get started for free", new_user_registration_path, class: "btn btn-lg btn-block btn-outline-primary" %>
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Quick Job</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">Free</h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>No Sign-up Required</li>
+          <li>Unlimited Job Postings</li>
+          <li>Quick posting of jobs</li>
+          <li>40 days Job duration</li>
+        </ul>
+        <%= link_to "Get started for free", new_job_path, class: "btn btn-lg btn-block btn-outline-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

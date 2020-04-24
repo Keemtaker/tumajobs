@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   resources :jobs do
     resources :job_candidates
   end
+
+  get 'about', to: "static_pages#about"
+  get 'pricing', to: "static_pages#pricing"
+
 end
