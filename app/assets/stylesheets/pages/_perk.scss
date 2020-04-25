@@ -18,38 +18,3 @@
 
   }
 }
-
-
-.card {
-  height: 382px;
-  display: table;
-  width: 100%;
-  background-size: cover !important;
-  background-position: center;
-  color: #1f2430;
-  position: relative;
-  text-align: center;
-}
-
-.job-card {
-  display: table-cell;
-  vertical-align: middle;
-  padding: 0 10px;
-  width: 100%;
-  height: 100%;
-  background-color: #F4F4F4;
-}
-
-.show-logo {
-  width: 80px;
-  border-radius: 50%;
-}
-
-.btn-success {
-  color: white;
-}
-
-trix-editor.form-control {
-  height: auto;
-}
-
