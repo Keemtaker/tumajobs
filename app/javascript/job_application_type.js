@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function(){
   $('input[type="radio"][name="job[job_application_type]"]').change(function() {
       if (this.value == 'Email') {
           $('.form-group.show-job-url').addClass('form-group--inactive');
