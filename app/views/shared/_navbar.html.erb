@@ -7,20 +7,31 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+
   <% if current_user && current_user.company %>
-    <%= link_to "Post a Job", new_company_job_path(@company), class: "btn btn-success job-button" %>
+    <%= link_to "Post a Job", new_company_job_path(current_user.company), class: "btn btn-success job-button" %>
   <% else %>
     <%= link_to "Post a Job", pricing_path, class: "btn btn-success job-button" %>
   <% end %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <%= link_to "About", about_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Jobs", jobs_path, class: "nav-link" %>
-        </li>
+      <li class="nav-item active">
+        <%= link_to "About", about_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <% if current_user && current_user.company %>
+          <%= link_to "CompanyProfile", company_path(current_user.company), class: "nav-link" %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <% if current_user && !current_user.company %>
+          <%= link_to "CompanyProfile", new_company_path, class: "nav-link" %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Jobs", jobs_path, class: "nav-link" %>
+      </li>
       <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to "Log Out", destroy_user_session_path, method: 'delete', class: "nav-link" %>

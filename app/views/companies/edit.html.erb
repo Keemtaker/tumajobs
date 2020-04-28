@@ -31,7 +31,9 @@
     <div class="form-group">
       <label class="col-md-1 control-label"></label>
       <div class="col-md-9">
-        <%= f.input :logo, as: :file %>
+        <%= f.input :logo, input_html: { class: 'd-none', id: 'logo-input' }, label_html: { class: 'upload-logo'}, label: '📷 Upload a company logo' %>
+        <%= f.input :logo_cache, as: :hidden %>
+        <%= image_tag @company.logo_url, width: 100, id: "logo-preview" %>
       </div>
     </div>
 
@@ -59,8 +61,11 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Submit", class: "btn btn-primary" %>
+      <div class="col-md-4">
+        <%= f.button :submit, "Submit", class: "btn btn-md btn-block btn-success" %>
+      </div>
     </div>
   </div>
+  <br>
 <% end %>
 
