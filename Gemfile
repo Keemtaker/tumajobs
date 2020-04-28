@@ -20,6 +20,7 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'ransack'
+gem 'carrierwave', '~> 2.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

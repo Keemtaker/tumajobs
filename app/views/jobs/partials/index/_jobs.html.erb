@@ -3,7 +3,7 @@
     <%= link_to company_job_path(job.company, job) do %>
     <div class="job-bar">
       <div class="logo">
-          <%= cl_image_tag job.company.logo.key, class: "company-logo" %>
+          <%= image_tag job.company.logo_url, class: "company-logo" %>
       </div>
       <div class="text">
         <div class="job-title">

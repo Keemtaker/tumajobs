@@ -1,6 +1,6 @@
 <div class="card">
   <div class="job-card">
-    <%= image_tag params[:company][:logo].path %>
+    <%= image_tag @company.logo.current_path.split('public').last, class: "show-logo" %>
     <h1><%= @company.name %></h1>
     <h3 style="color: #5DB1D1";><%= @company.location %></h3>
     <h3><%= @company.address %></h3>
