@@ -1,5 +1,11 @@
 <%= simple_form_for [@company], html: { class: 'form-horizontal' },wrapper: :horizontal_form do |f| %>
   <div class="container">
+    <br>
+    <div class="col-md-9">
+      <h1>Company Profile</h1>
+      <br>
+      <p class="lead">Create your company profile. You will be able to post jobs with the company profile you create</p>
+    </div>
     <div class="form-group">
       <label class="col-md-1 control-label"></label>
       <div class="col-md-9">
@@ -31,8 +37,16 @@
     <div class="form-group">
       <label class="col-md-1 control-label"></label>
       <div class="col-md-9">
-        <%= f.input :logo, :label => "Company Logo" %>
+        <%= f.input :website, :label => "Website" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-1 control-label"></label>
+      <div class="col-md-9">
+        <%= f.input :logo, input_html: { class: 'd-none', id: 'logo-input' }, label_html: { class: 'upload-logo'}, label: '📷 Upload a company logo' %>
         <%= f.input :logo_cache, as: :hidden %>
+        <%= image_tag "", width: 300, id: "logo-preview" %>
       </div>
     </div>
 
@@ -61,12 +75,15 @@
 
     <div class="form-group">
       <label class="col-md-1 control-label"></label>
-      <div class="col-md-9 text-center" style="margin-top: 110px;">
-        <%= f.button :submit , name: "previewButt", value: "Preview", formtarget:"_blank", data: { disable_with: false } %>
-        <%= f.button :submit , name: "createButt", value: "Submit", class: "btn btn-success post-btn", data: { disable_with: false } %>
+      <div class="col-md-4">
+        <%= f.button :submit , name: "previewButt", value: "Preview", class: "btn btn-md btn-block btn-outline-primary", formtarget:"_blank", data: { disable_with: false } %>
+      </div>
+      <br>
+      <div class="col-md-4 text-center">
+        <%= f.button :submit , name: "createButt", value: "Submit", class: "btn btn-md btn-block btn-success", data: { disable_with: false } %>
       </div>
       <div class="col-md-9" style="margin-top: 80px;">
-        <p style="color: gray;">Click <strong>Preview</strong> to see how your company profile would appear to applicants. The preview would open in a new tab. Return back to this page to <strong>Submit</strong> or make <strong>Edits</strong>.</p>
+        <p class="lead">Click <strong>Preview</strong> to see how your company profile would appear to applicants. The preview would open in a new tab. Return back to this page to <strong>Submit</strong> or make <strong>Edits</strong>.</p>
       </div>
     </div>
 <% end %>
