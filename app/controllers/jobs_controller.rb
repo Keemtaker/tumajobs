@@ -64,6 +64,7 @@ class JobsController < ApplicationController
 
   def unregistered_company_job
     @job = Job.new(job_params)
+    @temp_logo = params[:job][:unregistered_company_logo].path
       if params[:previewButt] == "Preview"
         # flash[:alert] = "This is a PREVIEW of your job posting. Go back to the previous tab to Post the job or make edits."
         render :create

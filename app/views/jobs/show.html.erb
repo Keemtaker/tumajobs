@@ -1,6 +1,6 @@
 <div class="card">
   <div class="job-card">
-    <%= cl_image_tag @job.company.logo.key, class: "show-logo" %>
+    <%= image_tag @job.company.logo_url, class: "show-logo" %>
     <h3><%= @job.company.name %></h3>
     <h1><%= @job.title %></h1>
     <h3 style="color: #5DB1D1";><%= @job.salary %></h3>

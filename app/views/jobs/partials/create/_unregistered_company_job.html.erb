@@ -1,5 +1,6 @@
 <div class="card">
   <div class="job-card">
+    <%= image_tag @job.unregistered_company_logo.current_path.split('public').last, class: "show-logo" %>
     <h3><%= @job.unregistered_company_name %></h3>
     <h1><%= @job.title %></h1>
     <h3 style="color: #5DB1D1";><%= @job.salary %></h3>

@@ -31,7 +31,8 @@
     <div class="form-group">
       <label class="col-md-1 control-label"></label>
       <div class="col-md-9">
-        <%= f.input :logo %>
+        <%= f.input :logo, :label => "Company Logo" %>
+        <%= f.input :logo_cache, as: :hidden %>
       </div>
     </div>
 

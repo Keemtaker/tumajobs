@@ -5,5 +5,5 @@ class Job < ApplicationRecord
   has_many :job_candidates, dependent: :destroy
 
   has_rich_text :description
-  has_one_attached :logo
+  mount_uploader :unregistered_company_logo, LogoUploader
 end
