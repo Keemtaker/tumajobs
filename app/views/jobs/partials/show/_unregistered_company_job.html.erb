@@ -1,7 +1,7 @@
 <div class="card">
   <div class="job-card">
-    <%= image_tag @job.company.logo_url, class: "show-logo" %>
-    <h3><%= @job.company.name %></h3>
+    <%= image_tag @job.unregistered_company_logo_url, class: "show-logo" %>
+    <h3><%= @job.unregistered_company_name %></h3>
     <h1><%= @job.title %></h1>
     <h3 style="color: #5DB1D1";><%= @job.salary %></h3>
   </div>
@@ -17,29 +17,19 @@
     <span><i class="fas fa-globe" aria-hidden="true"></i> <%= @job.location %></span>
     <span style="margin-left: 40px; color: #5DB1D1;"><i class="far fa-clock" aria-hidden="true"></i> <%= @job.job_type %></span>
   </div>
-  <% if current_user %>
-    <div class="col-md-3", style="margin-top: 40px;">
-      <%= link_to "Edit job details", edit_company_job_path(@job.company, @job),  class: "btn btn-md btn-block btn-outline-primary"%>
-    </div>
-  <% end %>
 
   <div style="margin-top: 40px;" class="col-md-10">
    <%= @job.description %>
   </div>
   <br>
-
-  <div class="col-md-3">
-    <%= link_to "company profile", company_path(@job.company), class: "btn btn-md btn-block btn-outline-primary", target:"_blank"%>
-  </div>
-  <br>
   <br>
 
   <div class="col-md-9">
-    <h3>Perks & Benefits at <%= @job.company.name %> </h3>
+    <h3>Perks & Benefits at <%= @job.unregistered_company_name %> </h3>
     <br>
     <br>
     <div class="row">
-      <% @job.company.perks.all.each do |perk| %>
+      <% @job.perks.all.each do |perk| %>
         <input style="display: none", class="hidden", type="checkbox", value="<%= perk.id %>" name="company[perk_ids][]" id="company_perk_ids_<%= perk.id %>"/>
         <div class="col-md-4 perk-choices">
           <label class="perk-choice" for="company_perk_ids_<%= perk.id %>">
