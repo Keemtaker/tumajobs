@@ -26,6 +26,13 @@
    <%= @job.description %>
   </div>
   <br>
+
+  <div class="col-md-3">
+    <%= link_to "company profile", company_path(@job.company), class: "btn btn-md btn-block btn-outline-primary", target:"_blank"%>
+  </div>
+  <br>
+  <br>
+
   <div class="col-md-9">
     <h3>Perks & Benefits at <%= @job.company.name %> </h3>
     <br>
