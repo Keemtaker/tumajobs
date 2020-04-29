@@ -53,7 +53,7 @@ class JobsController < ApplicationController
       if params[:previewButt] == "Preview"
         flash[:alert] = "This is a PREVIEW of your job posting. Go back to the previous tab to Post the job or make edits."
         render :create
-      elsif params[:createButt] == "Post Job"
+      elsif params[:createButt] == "Submit"
         @job.save
         flash[:notice] = "Success!"
         redirect_to company_job_path(@company, @job)

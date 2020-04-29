@@ -1,6 +1,8 @@
 <div class="card">
   <div class="job-card">
-    <%= image_tag @job.company.logo_url, class: "show-logo" %>
+    <%= link_to company_path(@job.company) do %>
+      <%= image_tag @job.company.logo_url, class: "show-logo" %>
+    <% end %>
     <h3><%= @job.company.name %></h3>
     <h1><%= @job.title %></h1>
     <h3 style="color: #5DB1D1";><%= @job.salary %></h3>
@@ -27,13 +29,6 @@
    <%= @job.description %>
   </div>
   <br>
-
-  <div class="col-md-3">
-    <%= link_to "company profile", company_path(@job.company), class: "btn btn-md btn-block btn-outline-primary", target:"_blank"%>
-  </div>
-  <br>
-  <br>
-
   <div class="col-md-9">
     <h3>Perks & Benefits at <%= @job.company.name %> </h3>
     <br>

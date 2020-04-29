@@ -39,7 +39,11 @@
           <li>Quick posting of jobs</li>
           <li>40 days Job duration</li>
         </ul>
-        <%= link_to "Get started for free", new_job_path, class: "btn btn-lg btn-block btn-outline-primary" %>
+        <% if current_user %>
+          <%= link_to "Log out and Use Quick job option", destroy_user_session_path, method: 'delete', class: "btn btn-lg btn-block btn-outline-primary" %>
+        <% else %>
+          <%= link_to "Get started for free", new_job_path, class: "btn btn-lg btn-block btn-outline-primary" %>
+        <% end %>
       </div>
     </div>
   </div>

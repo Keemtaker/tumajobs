@@ -16,6 +16,7 @@ require("../perk")
 require("../search")
 require("../job_filters")
 require("../job_application_type")
+require("../logo_preview")
 
 require("trix")
 require("@rails/actiontext")

@@ -7,7 +7,7 @@ class CompaniesController < ApplicationController
   def new
     if current_user.company
       @company = current_user.company[:id]
-      redirect_to new_company_job_path(@company)
+      redirect_to company_path(@company)
     else
       @company = Company.new
     end
@@ -41,7 +41,7 @@ class CompaniesController < ApplicationController
 
   def preview_company
     if params[:previewButt] == "Preview"
-      # flash[:alert] = "This is a PREVIEW of your company profile. Go back to the previous tab to Submit or make edits."
+      flash[:alert] = "This is a PREVIEW of your company profile. Go back to the previous tab to Submit or make edits."
       render :create
     elsif params[:createButt] == "Submit"
       @company.save
