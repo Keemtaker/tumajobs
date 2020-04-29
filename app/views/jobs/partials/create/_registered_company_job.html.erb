@@ -17,10 +17,6 @@
     <span><i class="fas fa-globe" aria-hidden="true"></i> <%= @job.location %></span>
     <span style="margin-left: 40px; color: #5DB1D1;"><i class="far fa-clock" aria-hidden="true"></i> <%= @job.job_type %></span>
   </div>
-  <% if current_user %>
-    <div class="col-md-12", style="margin-top: 40px;">
-    </div>
-  <% end %>
 
   <div style="margin-top: 40px;" class="col-md-10">
    <%= @job.description %>
