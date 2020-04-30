@@ -21,12 +21,12 @@
       <% end %>
     <% end %>
   </div>
+
   <div class="filter-style">
     <h4>Type</h4>
     <% type_order = ["Full-time", "Part-time", "Internship", "Student", "Co-founder", "Freelance"] %>
     <%= search_form_for @search, :class => 'filters_click' do |f| %>
-      <% new_job_types = @jobs.map(&:job_type).select(&:present?).uniq %>
-      <% new_job_types = type_order & new_job_types %>
+      <% new_job_types = type_order %>
 
       <% new_job_types.each do |new_job_type| %>
         <div class="styled-input-container">
@@ -40,23 +40,24 @@
       <% end %>
     <% end %>
   </div>
-  <div class="filter-style">
-    <h4>Salary</h4>
-    <% salary_order = ["Paid", "Unpaid",  "Commission"] %>
-    <%= search_form_for @search, :class => 'filters_click' do |f| %>
-      <% new_salary = @jobs.map(&:salary).select(&:present?).uniq %>
-      <% new_salary = salary_order & new_salary %>
 
-      <% new_salary.each do |salary| %>
-        <div class="styled-input-container">
-          <a>
-            <label>
-              <%= check_box_tag('q[salary_eq_any][]', salary) %>
-              <%= salary %>
-            </label>
-          </a>
-        </div>
-      <% end %>
+  <div class="filter-style">
+  <h4>Salary</h4>
+  <% salary_order = ["Paid", "Unpaid",  "Commission"] %>
+  <%= search_form_for @search, :class => 'filters_click' do |f| %>
+    <% new_salary = salary_order %>
+
+    <% new_salary.each do |salary| %>
+      <div class="styled-input-container">
+        <a>
+          <label>
+            <%= check_box_tag('q[salary_eq_any][]', salary) %>
+            <%= salary %>
+          </label>
+        </a>
+      </div>
     <% end %>
-  </div>
+  <% end %>
+</div>
+
 </div>
