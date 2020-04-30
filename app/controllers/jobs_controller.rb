@@ -55,7 +55,7 @@ class JobsController < ApplicationController
         render :create
       elsif params[:createButt] == "Submit"
         @job.save
-        flash[:notice] = "Success!"
+        flash[:notice] = "Congrats on successfully posting a job!"
         redirect_to company_job_path(@company, @job)
       else
         render :new
@@ -70,7 +70,7 @@ class JobsController < ApplicationController
       elsif
         params[:createButt] == "Submit"
         @job.save
-        flash[:notice] = "Success!"
+        flash[:notice] = "Congrats on successfully posting a job!"
         redirect_to @job
       else
         render :new
