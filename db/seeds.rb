@@ -84,9 +84,9 @@ job_list = [
   {title: "Software Engineer", description: description, role: "Software & IT", location: "Tamale", job_type: "Part-time", salary: "Commission", company_id: 1 },
   {title: "Sales Expert", description: description, role: "Marketing & Sales", location: "Accra", job_type: "Internship", salary: "Unpaid", company_id: 1 },
   {title: "License Manager", description: description, role: "Project Management", location: "Kumasi", job_type: "Full-time", salary: "Paid", company_id: 1 },
-  {title: "Agric Officer", description: description, role: "Other", location: "Copenhagen", job_type: "Full-time", salary: "Paid", company_id: 1 }
+  {title: "Agric Officer", description: description, role: "Other", location: "Copenhagen", job_type: "Full-time", salary: "Paid", company_id: 1 },
   {title: "Mathematics Tutor", description: description, role: "Education", location: "Kumasi", job_type: "Full-time", salary: "Paid", company_id: 1 },
-  {title: "Mobile Developer", description: description, role: "Software & IT", location: "Copenhagen", job_type: "Full-time", salary: "Paid", company_id: 1 }
+  {title: "Mobile Developer", description: description, role: "Software & IT", location: "Copenhagen", job_type: "Full-time", salary: "Paid", company_id: 1 },
 ]
 
 Job.create!(job_list)
