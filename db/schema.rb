@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_171422) do
+ActiveRecord::Schema.define(version: 2020_05_05_145253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,18 +78,6 @@ ActiveRecord::Schema.define(version: 2020_04_25_171422) do
     t.index ["perk_id"], name: "index_company_perks_on_perk_id"
   end
 
-  create_table "job_candidates", force: :cascade do |t|
-    t.string "full_name"
-    t.string "email"
-    t.string "resume"
-    t.string "mobile_number"
-    t.string "cover_letter"
-    t.bigint "job_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["job_id"], name: "index_job_candidates_on_job_id"
-  end
-
   create_table "job_perks", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.bigint "perk_id", null: false
@@ -125,6 +113,18 @@ ActiveRecord::Schema.define(version: 2020_04_25_171422) do
     t.string "icon"
   end
 
+  create_table "talents", force: :cascade do |t|
+    t.string "full_name"
+    t.string "email"
+    t.string "mobile_number"
+    t.string "resume"
+    t.string "cover_letter"
+    t.bigint "job_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_id"], name: "index_talents_on_job_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -151,8 +151,8 @@ ActiveRecord::Schema.define(version: 2020_04_25_171422) do
   add_foreign_key "companies", "users"
   add_foreign_key "company_perks", "companies"
   add_foreign_key "company_perks", "perks"
-  add_foreign_key "job_candidates", "jobs"
   add_foreign_key "job_perks", "jobs"
   add_foreign_key "job_perks", "perks"
   add_foreign_key "jobs", "companies"
+  add_foreign_key "talents", "jobs"
 end

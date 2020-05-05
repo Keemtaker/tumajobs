@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :jobs do
-    resources :job_candidates
+    resources :talents
   end
 
   get 'about', to: "static_pages#about"
