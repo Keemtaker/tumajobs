@@ -25,6 +25,7 @@ gem 'carrierwave', '~> 2.0'
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'dotenv-rails'
+  gem 'letter_opener'
 end
 
 group :development, :test do
