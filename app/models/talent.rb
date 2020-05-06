@@ -1,5 +1,5 @@
 class Talent < ApplicationRecord
-  after_create :send_job_application_confirmation
+  # after_create :send_job_application_confirmation
 
   belongs_to :job
   mount_uploader :resume, ResumeUploader
