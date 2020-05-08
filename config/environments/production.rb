@@ -38,6 +38,21 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudinary
 
+  config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      domain: 'gmail.com',
+      user_name: ENV['GMAIL_ADDRESS'],
+      password: ENV['GMAIL_APP_PASSWORD'],
+      authentication: :login,
+      enable_starttls_auto: true
+  }
+
+  config.action_mailer.default_url_options = { host: 'https://tumajobs.herokuapp.com' }
+
+
+
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
