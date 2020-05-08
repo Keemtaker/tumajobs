@@ -1,0 +1,12 @@
+Hi <%= @talent.full_name %>
+Thanks for your application
+<% if @talent.job.company_id? %>
+  You have applied for <%= link_to @talent.job.title, company_job_url(@talent.job.company, @talent.job) %> at <%= @talent.job.company.name %>
+<% else %>
+  You have applied for <%= link_to @talent.job.title, job_url(@talent.job) %> at <%= @talent.job.unregistered_company_name %>
+<% end %>
+
+The company will contact you if they decide to move forward with your application
+We wish you the very best of luck
+
+You can find more job opportunites at <%= link_to 'Tumajobs', jobs_url %>

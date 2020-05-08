@@ -1,0 +1,17 @@
+Hi Recruiter,
+<% if @talent.job.company_id? %>
+  This email contains job application details of the latest applicant for the job <%= link_to @talent.job.title, company_job_url(@talent.job.company, @talent.job) %> at <%= @talent.job.company.name %>
+<% else %>
+  This email contains job application details of the latest applicant for the job <%= link_to @talent.job.title, job_url(@talent.job) %> at <%= @talent.job.unregistered_company_name %>
+<% end %>
+Kindly find attached the resume(cv) and cover letter of the applicant
+
+Applicant's full name: <%= @talent.full_name %>
+Applicant's email: <%= @talent.email %>
+Applicant's mobile number: <%= @talent.mobile_number %>
+
+We are at <%= link_to 'Tumajobs', jobs_url %> are glad to be part of your recruitment efforts, thank you!
+Do not hesistate to post unlimited number of jobs for free at <%= link_to 'Tumajobs', jobs_url %>
+
+Have a nice day!
+
