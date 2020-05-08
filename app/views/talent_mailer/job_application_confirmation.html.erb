@@ -1,2 +1,23 @@
+<style>
+  a {
+    color: blue;
+    text-decoration: none;
+  }
+</style>
+
+
+<%= image_tag(attachments['logo.png'].url, style: 'width: 50px; border-radius: 50%;') %>
+<br>
+<br>
 <p>Hi <%= @talent.full_name %>,</p>
-<p>This is your resume information <%= @talent.resume %></p>
+<p>Thanks for your application</p>
+<% if @talent.job.company_id? %>
+  <p>You have applied for <%= link_to @talent.job.title, company_job_url(@talent.job.company, @talent.job) %> at <%= @talent.job.company.name %></p>
+<% else %>
+  <p>You have applied for <%= link_to @talent.job.title, job_url(@talent.job) %> at <%= @talent.job.unregistered_company_name %></p>
+<% end %>
+<br>
+<p>The company will contact you if they decide to move forward with your application</p>
+<p>We wish you the very best of luck</p>
+<br>
+<p>You can find more job opportunites at <%= link_to 'Tumajobs', jobs_url %></p>
