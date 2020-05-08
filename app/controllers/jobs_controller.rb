@@ -80,7 +80,7 @@ class JobsController < ApplicationController
 
   def job_params
     params.require(:job).permit(:title, :description, :role, :job_type, :keywords, :salary, :location, :company_id, :unregistered_company_name, :unregistered_company_logo,
-    :job_application_type, :job_email, :job_url, perk_ids:[])
+    :unregistered_company_email, :job_application_type, :job_email, :job_url, perk_ids:[])
   end
 
 end

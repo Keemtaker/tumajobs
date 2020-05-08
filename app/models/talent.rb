@@ -1,5 +1,5 @@
 class Talent < ApplicationRecord
-  after_create :send_job_application_confirmation
+  after_create :send_job_application_confirmation, :send_talent_info_to_company
 
   belongs_to :job
   mount_uploader :resume, ResumeUploader
@@ -10,8 +10,8 @@ class Talent < ApplicationRecord
        TalentMailer.job_application_confirmation(self).deliver_now
     end
 
-    def send_talent_info
-       TalentMailer.talent_info(self).deliver_now
+    def send_talent_info_to_company
+       TalentMailer.talent_info_to_company(self).deliver_now
     end
 
 end

@@ -1,14 +1,3 @@
-<style>
-  a {
-    color: blue;
-    text-decoration: none;
-  }
-</style>
-
-
-<%= image_tag(attachments['logo.png'].url, style: 'width: 50px; border-radius: 50%;') %>
-<br>
-<br>
 <p>Hi <%= @talent.full_name %>,</p>
 <p>Thanks for your application</p>
 <% if @talent.job.company_id? %>
