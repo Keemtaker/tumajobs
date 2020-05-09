@@ -8,7 +8,11 @@
 </div>
 
 <div style="padding: 10px; background-color: white;" class="text-center">
-  <span class="btn btn-success">Apply</span>
+  <% if @job.job_email? %>
+    <span class="btn btn-success">Quick Apply</span>
+  <% else %>
+    <span class="btn btn-success fas fa-external-link-alt">Apply</span>
+  <% end %>
 </div>
 
 <div class="container">
