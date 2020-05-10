@@ -9,6 +9,7 @@ gem 'puma', '>= 4.3.2'
 gem 'rails', '6.0.2.1'
 gem 'redis'
 gem 'cloudinary'
+gem 'rails_admin', '~> 2.0.2'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
