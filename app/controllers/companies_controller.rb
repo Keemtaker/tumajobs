@@ -6,26 +6,29 @@ class CompaniesController < ApplicationController
   # end
 
   def new
+    @company = Company.new
+    company_authorization
     if current_user.company
       @company = current_user.company[:id]
       redirect_to company_path(@company)
-    else
-      @company = Company.new
     end
   end
 
   def create
     @company = Company.new(company_params)
     @company.user = current_user
+    company_authorization
     preview_company
   end
 
   def show
-     @company = Company.find(params[:id])
+   @company = Company.find(params[:id])
+   company_authorization
   end
 
   def edit
     @company = Company.find(params[:id])
+    company_authorization
   end
 
   def update
@@ -39,6 +42,10 @@ class CompaniesController < ApplicationController
   end
 
   private
+
+  def company_authorization
+    authorize @company
+  end
 
   def preview_company
     if params[:previewButt] == "Preview"

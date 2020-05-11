@@ -14,7 +14,7 @@
 <% end %>
 
 <div class="container">
-  <% if current_user %>
+  <% if policy(@company).edit? %>
     <div class="col-md-3", style="margin-top: 40px;">
       <%= link_to "Edit company profile", edit_company_path(@company),  class: "btn btn-md btn-block btn-outline-primary"%>
     </div>
