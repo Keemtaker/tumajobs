@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<% if current_user %>
+<% if policy(@company).edit? %>
   <div style="padding: 10px; background-color: white;" class="text-center">
     <%= link_to "Post a job", new_company_job_path(@company),  class: "btn btn-success btn-lg" %>
   </div>
