@@ -1,8 +1,9 @@
 class CompaniesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show]
 
-  def index
-     @companies = Company.all
-  end
+  # def index
+  #    @companies = Company.all
+  # end
 
   def new
     if current_user.company

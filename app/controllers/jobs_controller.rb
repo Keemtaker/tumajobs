@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
 
   def index
     @search = Job.ransack(params[:q])
