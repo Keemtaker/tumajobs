@@ -21,7 +21,7 @@
     <span><i class="fas fa-globe" aria-hidden="true"></i> <%= @job.location %></span>
     <span style="margin-left: 40px; color: #5DB1D1;"><i class="far fa-clock" aria-hidden="true"></i> <%= @job.job_type %></span>
   </div>
-  <% if current_user %>
+  <% if policy(@job).edit? %>
     <div class="col-md-3", style="margin-top: 40px;">
       <%= link_to "Edit job details", edit_company_job_path(@job.company, @job),  class: "btn btn-md btn-block btn-outline-primary"%>
     </div>

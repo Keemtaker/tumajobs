@@ -10,7 +10,7 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def show?
-    return true
+    true
   end
 
   def update?

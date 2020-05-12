@@ -1,10 +1,6 @@
 class CompaniesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
 
-  # def index
-  #    @companies = Company.all
-  # end
-
   def new
     @company = Company.new
     company_authorization
@@ -18,7 +14,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     @company.user = current_user
     company_authorization
-    preview_company
+    company_setup
   end
 
   def show
@@ -47,7 +43,7 @@ class CompaniesController < ApplicationController
     authorize @company
   end
 
-  def preview_company
+  def company_setup
     if params[:previewButt] == "Preview"
       flash[:alert] = "This is a PREVIEW of your company profile. Go back to the previous tab to Submit or make edits."
       render :create
