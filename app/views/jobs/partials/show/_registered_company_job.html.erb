@@ -23,7 +23,11 @@
   </div>
   <% if policy(@job).edit? %>
     <div class="col-md-3", style="margin-top: 40px;">
-      <%= link_to "Edit job details", edit_company_job_path(@job.company, @job),  class: "btn btn-md btn-block btn-outline-primary"%>
+      <%= link_to "Edit job details", edit_company_job_path(@job.company, @job), class: "btn btn-md btn-block btn-outline-primary"%>
+    </div>
+    <div class="col-md-3", style="margin-top: 40px;">
+      <%= link_to "Delete Job", company_job_path(@job.company, @job), method: :delete, data: { confirm: "Are you sure you want to delete the job posting?" },
+      class: "btn btn-md btn-block btn-outline-danger"%>
     </div>
   <% end %>
 

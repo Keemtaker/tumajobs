@@ -39,12 +39,21 @@ class JobsController < ApplicationController
 
   def update
     edit
-    @job.update(job_params)
-      if @job.update(job_params)
-        redirect_to company_job_path(@company, @job)
-      else
-        render :edit
-      end
+    if @job.update(job_params)
+      flash[:notice] = "You have successfully edited the job posting"
+      redirect_to company_job_path(@company, @job)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @job = Job.find(params[:id])
+    authorize @job
+    if @job.destroy
+        flash[:notice] = "You have successfully deleted the job posting"
+       redirect_to company_path(@job.company)
+    end
   end
 
   private
