@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="job-card">
+    <%= image_tag @job.company.logo_url, class: "show-logo" %>
+    <h3><%= @job.company.name %></h3>
+    <h1><%= @job.title %></h1>
+    <h3 style="color: #5DB1D1";><%= @job.salary %></h3>
+  </div>
+</div>
+
+  <div style="padding: 10px; background-color: white;" class="text-center">
+    <% if @job.job_email? %>
+      <span class="btn btn-success">Quick Apply</span>
+    <% else %>
+      <span class="btn btn-success fas fa-external-link-alt">Apply</span>
+    <% end %>
+  </div>
+
+<div class="container">
+  <br>
+  <div class="col-md-12">
+    <span><i class="fas fa-globe" aria-hidden="true"></i> <%= @job.location %></span>
+    <span style="margin-left: 40px; color: #5DB1D1;"><i class="far fa-clock" aria-hidden="true"></i> <%= @job.job_type %></span>
+  </div>
+
+  <%= render "jobs/registered_company/shared_forms/show_create" %>
+
+</div>

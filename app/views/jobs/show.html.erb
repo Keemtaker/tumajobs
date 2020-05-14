@@ -1,5 +1,5 @@
 <% if @job.company_id? %>
-  <%= render 'jobs/partials/show/registered_company_job' %>
+  <%= render "jobs/registered_company/show" %>
 <% else %>
   <%= render 'jobs/partials/show/unregistered_company_job' %>
 <% end %>

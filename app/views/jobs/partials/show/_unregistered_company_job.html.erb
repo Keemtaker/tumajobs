@@ -33,7 +33,7 @@
     <br>
     <br>
     <div class="row">
-      <% @job.perks.all.each do |perk| %>
+      <% @job.perks.each do |perk| %>
         <input style="display: none", class="hidden", type="checkbox", value="<%= perk.id %>" name="company[perk_ids][]" id="company_perk_ids_<%= perk.id %>"/>
         <div class="col-md-4 perk-choices">
           <label class="perk-choice" for="company_perk_ids_<%= perk.id %>">
