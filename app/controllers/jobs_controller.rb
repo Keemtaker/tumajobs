@@ -1,16 +1,21 @@
 class JobsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show, :create, :new]
 
   def index
     @search = Job.ransack(params[:q])
+    @jobs = policy_scope(Job)
     @jobs = @search.result(distinct: true).order("id DESC")
   end
 
   def new
-    if current_user
+    if request.fullpath == new_job_path
+      @job = Job.new
+      authorize @job
+    else
+      authenticate_user!
       @company = Company.find(params[:company_id])
       @job = @company.jobs.new
-    else
-      @job = Job.new
+      authorize @job
     end
   end
 
@@ -24,24 +29,31 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    authorize @job
   end
 
   def edit
-    @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
-
+    authorize @job
   end
 
   def update
     edit
-    @company = params[:company_id]
-    @job.company_id = @company
-    @job.update(job_params)
-      if @job.update(job_params)
-        redirect_to company_job_path(@company, @job)
-      else
-        render :edit
-      end
+    if @job.update(job_params)
+      flash[:notice] = "You have successfully edited the job posting"
+      redirect_to company_job_path(@company, @job)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @job = Job.find(params[:id])
+    authorize @job
+    if @job.destroy
+        flash[:notice] = "You have successfully deleted the job posting"
+       redirect_to company_path(@job.company)
+    end
   end
 
   private
@@ -50,6 +62,7 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @company =  params[:company_id]
     @job.company_id = @company
+    authorize @job
       if params[:previewButt] == "Preview"
         flash[:alert] = "This is a PREVIEW of your job posting. Go back to the previous tab to Post the job or make edits."
         render :create
@@ -64,6 +77,7 @@ class JobsController < ApplicationController
 
   def unregistered_company_job
     @job = Job.new(job_params)
+    authorize @job
       if params[:previewButt] == "Preview"
         flash[:alert] = "This is a PREVIEW of your job posting. Go back to the previous tab to Post the job or make edits."
         render :create

@@ -1,30 +1,30 @@
 class CompaniesController < ApplicationController
-
-  def index
-     @companies = Company.all
-  end
+  skip_before_action :authenticate_user!, only: [:show]
 
   def new
+    @company = Company.new
+    company_authorization
     if current_user.company
       @company = current_user.company[:id]
       redirect_to company_path(@company)
-    else
-      @company = Company.new
     end
   end
 
   def create
     @company = Company.new(company_params)
     @company.user = current_user
-    preview_company
+    company_authorization
+    company_setup
   end
 
   def show
-     @company = Company.find(params[:id])
+   @company = Company.find(params[:id])
+   company_authorization
   end
 
   def edit
     @company = Company.find(params[:id])
+    company_authorization
   end
 
   def update
@@ -39,7 +39,11 @@ class CompaniesController < ApplicationController
 
   private
 
-  def preview_company
+  def company_authorization
+    authorize @company
+  end
+
+  def company_setup
     if params[:previewButt] == "Preview"
       flash[:alert] = "This is a PREVIEW of your company profile. Go back to the previous tab to Submit or make edits."
       render :create
