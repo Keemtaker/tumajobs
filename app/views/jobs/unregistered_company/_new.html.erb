@@ -1,19 +1,30 @@
-<%= simple_form_for [@company], html: { class: 'form-horizontal' },wrapper: :horizontal_form do |f| %>
+<%= simple_form_for @job, html: { class: 'form-horizontal' },wrapper: :horizontal_form do |f| %>
   <div class="container">
     <br>
-    <div class="col-md-9">
-      <h1>Company Profile</h1>
-      <br>
-      <p class="lead">Create your company profile. You will be able to post jobs with the company profile you create</p>
-    </div>
-
-    <%= render "companies/shared_forms/new_edit", f: f %>
+    <h1>Job Details</h1>
+    <br>
 
     <div class="form-group">
       <label class="col-md-1 control-label"></label>
       <div class="col-md-9">
-        <%= f.input :logo, input_html: { class: 'd-none', id: 'logo-input' }, label_html: { class: 'upload-logo'}, label: '📷 Upload a company logo' %>
-        <%= f.input :logo_cache, as: :hidden %>
+        <%= f.input :unregistered_company_name,  :label => "Company name" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-1 control-label"></label>
+      <div class="col-md-9">
+        <%= f.input :unregistered_company_email,  :label => "Company Contact Email" %>
+      </div>
+    </div>
+
+    <%= render "jobs/partials/new_edit", f: f %>
+
+    <div class="form-group">
+      <label class="col-md-1 control-label"></label>
+      <div class="col-md-9">
+        <%= f.input :unregistered_company_logo, input_html: { class: 'd-none', id: 'logo-input' }, label_html: { class: 'upload-logo'}, label: '📷 Upload a company logo' %>
+        <%= f.input :unregistered_company_logo_cache, as: :hidden %>
         <%= image_tag "", width: 100, id: "logo-preview" %>
       </div>
     </div>
@@ -28,9 +39,9 @@
       <div class="col-md-9">
         <div class="row">
           <% Perk.all.each do |perk| %>
-            <input style="display: none", class="hidden", type="checkbox", value="<%= perk.id %>" name="company[perk_ids][]" id="company_perk_ids_<%= perk.id %>"/>
+            <input style="display: none", class="hidden", type="checkbox", value="<%= perk.id %>" name="job[perk_ids][]" id="job_perk_ids_<%= perk.id %>"/>
             <div class="col-md-4 perk-choices">
-              <label class="perk-choice" for="company_perk_ids_<%= perk.id %>">
+              <label class="perk-choice" for="job_perk_ids_<%= perk.id %>">
                 <i class="<%= perk.icon %>" aria-hidden="true"></i>
                 <br>
                 <%= perk.name %>
@@ -42,11 +53,11 @@
     </div>
 
     <div class="form-group">
+      <label class="col-md-1 control-label"></label>
       <div class="col-md-9">
         <p class="lead">Click <strong>Preview</strong> to see how your company profile would appear to applicants. The preview would open in a new tab. Return back to this page to <strong>Submit</strong> or make <strong>Edits</strong>.</p>
       </div>
       <br>
-      <label class="col-md-1 control-label"></label>
       <div class="col-md-4">
         <%= f.button :submit , name: "previewButt", value: "Preview", class: "btn btn-md btn-block btn-outline-primary", formtarget:"_blank", data: { disable_with: false } %>
       </div>

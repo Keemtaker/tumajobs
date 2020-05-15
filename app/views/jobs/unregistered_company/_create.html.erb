@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="job-card">
+    <%= image_tag @job.unregistered_company_logo.current_path.split('public').last, class: "show-logo" %>
+    <h3><%= @job.unregistered_company_name %></h3>
+    <h1><%= @job.title %></h1>
+    <h3 style="color: #5DB1D1";><%= @job.salary %></h3>
+  </div>
+</div>
+
+<div style="padding: 10px; background-color: white;" class="text-center">
+  <% if @job.job_email? %>
+    <span class="btn btn-success">Quick Apply</span>
+  <% else %>
+    <span class="btn btn-success fas fa-external-link-alt">Apply</span>
+  <% end %>
+</div>
+
+<%= render "jobs/unregistered_company/shared_forms/show_create" %>
+

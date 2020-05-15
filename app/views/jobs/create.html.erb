@@ -1,5 +1,5 @@
 <% if current_user %>
-  <%= render 'jobs/partials/create/registered_company_job' %>
+  <%= render "jobs/registered_company/create" %>
 <% else %>
-  <%= render 'jobs/partials/create/unregistered_company_job' %>
+  <%= render "jobs/unregistered_company/create" %>
 <% end %>

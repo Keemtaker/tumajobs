@@ -1,0 +1,27 @@
+<%= simple_form_for [@company, @job], html: { class: 'form-horizontal' },wrapper: :horizontal_form do |f| %>
+  <div class="container">
+    <br>
+    <div class="col-md-9">
+      <h1>Job Details</h1>
+    </div>
+    <br>
+
+    <%= render "jobs/partials/new_edit", f: f %>
+
+    <div class="form-group">
+      <label class="col-md-1 control-label"></label>
+      <div class="col-md-9">
+        <p class="lead">Click <strong>Preview</strong> to see how your company profile would appear to applicants. The preview would open in a new tab. Return back to this page to <strong>Submit</strong> or make <strong>Edits</strong>.</p>
+      </div>
+      <br>
+      <div class="col-md-4">
+        <%= f.button :submit , name: "previewButt", value: "Preview", class: "btn btn-md btn-block btn-outline-primary", formtarget:"_blank", data: { disable_with: false } %>
+      </div>
+      <br>
+      <div class="col-md-4">
+        <%= f.button :submit , name: "createButt", value: "Submit", class: "btn btn-md btn-block btn-success", data: { disable_with: false } %>
+      </div>
+    </div>
+    <br>
+  </div>
+<% end %>

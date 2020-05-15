@@ -31,32 +31,6 @@
     </div>
   <% end %>
 
-  <div style="margin-top: 40px;" class="col-md-10">
-   <%= @job.description %>
-  </div>
-  <br>
+  <%= render "jobs/registered_company/shared_forms/show_create" %>
 
-  <div class="col-md-3">
-    <%= link_to "company profile", company_path(@job.company), class: "btn btn-md btn-block btn-outline-primary", target:"_blank"%>
-  </div>
-  <br>
-  <br>
-
-  <div class="col-md-9">
-    <h3>Perks & Benefits at <%= @job.company.name %> </h3>
-    <br>
-    <br>
-    <div class="row">
-      <% @job.company.perks.all.each do |perk| %>
-        <input style="display: none", class="hidden", type="checkbox", value="<%= perk.id %>" name="company[perk_ids][]" id="company_perk_ids_<%= perk.id %>"/>
-        <div class="col-md-4 perk-choices">
-          <label class="perk-choice" for="company_perk_ids_<%= perk.id %>">
-            <i class="<%= perk.icon %>" aria-hidden="true"></i>
-            <br>
-            <%= perk.name %>
-          </label>
-        </div>
-      <% end %>
-    </div>
-  </div>
 </div>

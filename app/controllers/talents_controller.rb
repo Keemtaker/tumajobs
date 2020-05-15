@@ -1,4 +1,7 @@
 class TalentsController < ApplicationController
+  skip_before_action :authenticate_user!
+  skip_after_action :verify_authorized
+
   def new
     @job = Job.find(params[:job_id])
     @talent = @job.talents.new
@@ -16,9 +19,9 @@ class TalentsController < ApplicationController
     end
   end
 
-  def show
-    @talent = Talent.find(params[:id])
-  end
+  # def show
+  #   @talent = Talent.find(params[:id])
+  # end
 
 
   private

@@ -1,0 +1,26 @@
+<div style="margin-top: 40px;" class="col-md-9">
+ <%= @company.description %>
+</div>
+<br>
+<% if @company.website %>
+  <div class="col-md-2">
+    <%= link_to "Website", @company.website, :target => "_blank", class: "btn btn-md btn-block btn-outline-primary" %>
+  </div>
+  <br>
+<% end %>
+<div class="col-md-9">
+  <h1>Perks & Benefits at <%= @company.name %></h1>
+  <br>
+  <div class="row">
+    <% @company.perks.each do |perk| %>
+      <input style="display: none", class="hidden", type="checkbox", value="<%= perk.id %>" name="company[perk_ids][]" id="company_perk_ids_<%= perk.id %>"/>
+      <div class="col-md-4 perk-choices">
+        <label class="perk-choice" for="company_perk_ids_<%= perk.id %>">
+          <i class="<%= perk.icon %>" aria-hidden="true"></i>
+          <br>
+          <%= perk.name %>
+        </label>
+      </div>
+    <% end %>
+  </div>
+</div>

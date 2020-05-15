@@ -1,0 +1,16 @@
+<%= simple_form_for [@company, @job], html: { class: 'form-horizontal' },wrapper: :horizontal_form do |f| %>
+  <div class="container">
+    <br>
+    <h1>Edit Job Details</h1>
+    <br>
+    <%= render "jobs/partials/new_edit", f: f %>
+    <br>
+
+    <div class="form-actions">
+      <div class="col-md-4">
+        <%= f.button :submit, "Submit", class: "btn btn-md btn-block btn-success" %>
+      </div>
+    </div>
+  </div>
+  <br>
+<% end %>
