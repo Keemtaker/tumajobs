@@ -1,5 +1,10 @@
 class CompaniesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: [:show, :index]
+
+  def index
+    redirect_to new_company_path
+    skip_policy_scope
+  end
 
   def new
     @company = Company.new
@@ -47,12 +52,13 @@ class CompaniesController < ApplicationController
     if params[:previewButt] == "Preview"
       flash[:alert] = "This is a PREVIEW of your company profile. Go back to the previous tab to Submit or make edits."
       render :create
-    elsif params[:createButt] == "Submit"
-      @company.save
-      flash[:notice] = "Congrats on creating a company profile."
-      redirect_to @company
-    else
-      render :new
+    else params[:createButt] == "Submit"
+      if @company.save
+        flash[:notice] = "Congrats on creating a company profile."
+        redirect_to @company
+      else
+        render :new
+      end
     end
   end
 
