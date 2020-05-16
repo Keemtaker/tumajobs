@@ -8,7 +8,7 @@
 <div class="form-group">
   <label class="col-md-1 control-label"></label>
   <div class="col-md-9">
-    <%= f.input :description, as: :rich_text_area, :label => "Description" %>
+    <%= f.input :description, as: :rich_text_area, :label => "Job Description" %>
   </div>
 </div>
 
@@ -16,7 +16,7 @@
   <label class="col-md-1 control-label"></label>
   <div class="col-md-9">
     <%= f.input :role, collection: ["Software & IT", "Accounting & Finance", "Marketing & Sales", "Engineer", "Health", "Education", "Designer", "Business Developer",
-    "Office Administration", "Customer Service", "Project Management", "Banking & Investment", "Consulting", "Other"], :label => "Role" %>
+    "Office Administration", "Customer Service", "Project Management", "Banking & Investment", "Consulting", "Other"], :label => "Job Role" %>
   </div>
 </div>
 
@@ -44,7 +44,7 @@
 <div class="form-group">
   <label class="col-md-1 control-label"></label>
   <div class="col-md-9">
-    <%= f.input :job_application_type, as: :radio_buttons, collection: [['Apply By Email', 'Email', checked: true ], ['Apply By Url', 'Url' ]], :label => "How to apply" %>
+    <%= f.input :job_application_type, as: :radio_buttons, collection: [['Apply By Emai', 'Email', checked: true ], ['Apply By Url', 'Url' ]], :label => "How should job seekers apply for the job?" %>
   </div>
 </div>
 

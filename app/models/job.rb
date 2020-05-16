@@ -9,6 +9,16 @@ class Job < ApplicationRecord
   has_rich_text :description
   mount_uploader :unregistered_company_logo, LogoUploader
 
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :role, presence: true
+  validates :location, presence: true
+  validates :job_type, presence: true
+  validates :salary, presence: true
+  validates :job_email, presence: true, if: -> { self.job_application_type == "Email" }
+  validates :job_url, presence: true, if: -> { self.job_application_type == "Url" }
+
+
   private
     def send_job_post_confirmation
        JobMailer.job_post_confirmation(self).deliver_now

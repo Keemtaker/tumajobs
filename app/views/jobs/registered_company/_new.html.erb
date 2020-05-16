@@ -1,4 +1,4 @@
-<%= simple_form_for [@company, @job], html: { class: 'form-horizontal' },wrapper: :horizontal_form do |f| %>
+<%= simple_form_for @job, :url => company_jobs_path(@company, @job), :method => :post, html: { class: 'form-horizontal' },wrapper: :horizontal_form do |f| %>
   <div class="container">
     <br>
     <div class="col-md-9">
@@ -6,7 +6,70 @@
     </div>
     <br>
 
-    <%= render "jobs/partials/new_edit", f: f %>
+<div class="form-group">
+  <label class="col-md-1 control-label"></label>
+  <div class="col-md-9">
+    <%= f.input :title,  :label => "Job title" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-1 control-label"></label>
+  <div class="col-md-9">
+    <%= f.input :description, as: :rich_text_area, :label => "Job Description" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-1 control-label"></label>
+  <div class="col-md-9">
+    <%= f.input :role, collection: ["Software & IT", "Accounting & Finance", "Marketing & Sales", "Engineer", "Health", "Education", "Designer", "Business Developer",
+    "Office Administration", "Customer Service", "Project Management", "Banking & Investment", "Consulting", "Other"], :label => "Job Role" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-1 control-label"></label>
+  <div class="col-md-9">
+    <%= f.input :location, :label => "Job location" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-1 control-label"></label>
+  <div class="col-md-9">
+    <%= f.input :job_type, collection: ["Full-time", "Part-time", "Internship", "Student", "Co-founder", "Freelance"], :label => "Job Type" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-1 control-label"></label>
+  <div class="col-md-9">
+    <%= f.input :salary, collection: ["Paid", "Unpaid", "Commission"], :label => "Salary" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-1 control-label"></label>
+  <div class="col-md-9">
+    <%= f.input :job_application_type, as: :radio_buttons, collection: [['Apply By Email', 'Email', checked: true ], ['Apply By Url', 'Url' ]], :label => "How should job seekers apply for the job?" %>
+  </div>
+</div>
+
+
+<div class="form-group show-job-email" >
+  <label class="col-md-1 control-label"></label>
+  <div class="col-md-9">
+    <%= f.input :job_email, :label => "Job Email", placeholder: "Applications for this job will be sent to the email address you specify" %>
+  </div>
+</div>
+
+<div class="form-group form-group--inactive show-job-url">
+  <label class="col-md-1 control-label"></label>
+  <div class="col-md-9">
+    <%= f.input :job_url, :label => "Job Url", placeholder: "Applicants will go to the URL you specify to apply for this job." %>
+  </div>
+</div>
 
     <div class="form-group">
       <label class="col-md-1 control-label"></label>

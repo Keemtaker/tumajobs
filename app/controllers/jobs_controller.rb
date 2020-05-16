@@ -63,16 +63,17 @@ class JobsController < ApplicationController
     @company =  params[:company_id]
     @job.company_id = @company
     authorize @job
-      if params[:previewButt] == "Preview"
-        flash[:alert] = "This is a PREVIEW of your job posting. Go back to the previous tab to Post the job or make edits."
-        render :create
-      elsif params[:createButt] == "Submit"
-        @job.save
+    if params[:previewButt] == "Preview"
+      flash[:alert] = "This is a PREVIEW of your job posting. Go back to the previous tab to Post the job or make edits."
+      render :create
+    else params[:createButt] == "Submit"
+      if @job.save
         flash[:notice] = "Congrats on successfully posting a job!"
         redirect_to company_job_path(@company, @job)
       else
         render :new
       end
+    end
   end
 
   def unregistered_company_job
