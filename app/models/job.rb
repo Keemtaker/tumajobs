@@ -17,11 +17,23 @@ class Job < ApplicationRecord
   validates :salary, presence: true
   validates :job_email, presence: true, if: -> { self.job_application_type == "Email" }
   validates :job_url, presence: true, if: -> { self.job_application_type == "Url" }
-
+  validates :unregistered_company_name, presence: true, if: :unregistered_company_name_validation
+  validates :unregistered_company_email, presence: true, if: :unregistered_company_email_validation
 
   private
-    def send_job_post_confirmation
-       JobMailer.job_post_confirmation(self).deliver_now
-    end
+
+  def unregistered_company_name_validation
+    new_job = Job.new
+    new_job.unregistered_company_name.nil?
+  end
+
+  def unregistered_company_email_validation
+    new_job = Job.new
+    new_job.unregistered_company_email.nil?
+  end
+
+  def send_job_post_confirmation
+     JobMailer.job_post_confirmation(self).deliver_now
+  end
 
 end
