@@ -15,10 +15,10 @@ class Job < ApplicationRecord
   validates :location, presence: true
   validates :job_type, presence: true
   validates :salary, presence: true
-  validates :job_email, presence: true, if: -> { self.job_application_type == "Email" }
+  validates :job_email, presence: true, if: -> { self.job_application_type == "Email" }, format: Devise.email_regexp
   validates :job_url, presence: true, if: -> { self.job_application_type == "Url" }
-  validates :unregistered_company_name, presence: true, if: :unregistered_company_name_validation
-  validates :unregistered_company_email, presence: true, if: :unregistered_company_email_validation
+  # validates :unregistered_company_name, presence: true, if: :unregistered_company_name_validation
+  # validates :unregistered_company_email, presence: true, if: :unregistered_company_email_validation, format: Devise.email_regexp
 
   private
 

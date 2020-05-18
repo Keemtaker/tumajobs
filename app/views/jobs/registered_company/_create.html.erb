@@ -1,6 +1,10 @@
 <div class="card">
   <div class="job-card">
-    <%= image_tag @job.company.logo_url, class: "show-logo" %>
+    <% if @job.unregistered_company_logo? %>
+      <%= image_tag @job.company.logo_url, class: "show-logo" %>
+    <% else %>
+      <%= image_tag "fallback.png", class: "show-logo" %>
+    <% end %>
     <h3><%= @job.company.name %></h3>
     <h1><%= @job.title %></h1>
     <h3 style="color: #5DB1D1";><%= @job.salary %></h3>

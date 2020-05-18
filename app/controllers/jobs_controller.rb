@@ -41,7 +41,7 @@ class JobsController < ApplicationController
     edit
     if @job.update(job_params)
       flash[:notice] = "You have successfully edited the job posting"
-      redirect_to company_job_path(@company, @job)
+      redirect_to company_job_path(@job.company, @job)
     else
       render :edit
     end
