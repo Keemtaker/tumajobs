@@ -1,5 +1,7 @@
 class Job < ApplicationRecord
   after_create :send_job_post_confirmation
+  attr_accessor :unregistered_company_validation
+
 
   belongs_to :company, optional: true
   has_many :job_perks
@@ -17,20 +19,10 @@ class Job < ApplicationRecord
   validates :salary, presence: true
   validates :job_email, presence: true, if: -> { self.job_application_type == "Email" }, format: Devise.email_regexp
   validates :job_url, presence: true, if: -> { self.job_application_type == "Url" }
-  # validates :unregistered_company_name, presence: true, if: :unregistered_company_name_validation
-  # validates :unregistered_company_email, presence: true, if: :unregistered_company_email_validation, format: Devise.email_regexp
+  validates :unregistered_company_name, presence: true, if: -> { unregistered_company_validation }
+  validates :unregistered_company_email, presence: true, if: -> { unregistered_company_validation }, format: Devise.email_regexp
 
   private
-
-  def unregistered_company_name_validation
-    new_job = Job.new
-    new_job.unregistered_company_name.nil?
-  end
-
-  def unregistered_company_email_validation
-    new_job = Job.new
-    new_job.unregistered_company_email.nil?
-  end
 
   def send_job_post_confirmation
      JobMailer.job_post_confirmation(self).deliver_now

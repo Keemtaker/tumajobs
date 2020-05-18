@@ -80,6 +80,7 @@ class JobsController < ApplicationController
   def unregistered_company_job
     @job = Job.new(job_params)
     authorize @job
+    @job.unregistered_company_validation = true
     if params[:previewButt] == "Preview"
       flash[:alert] = "This is a PREVIEW of your job posting. Go back to the previous tab to Post the job or make edits."
       render :create
