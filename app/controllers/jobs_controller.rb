@@ -41,7 +41,7 @@ class JobsController < ApplicationController
     edit
     if @job.update(job_params)
       flash[:notice] = "You have successfully edited the job posting"
-      redirect_to company_job_path(@company, @job)
+      redirect_to company_job_path(@job.company, @job)
     else
       render :edit
     end
@@ -56,6 +56,7 @@ class JobsController < ApplicationController
     end
   end
 
+
   private
 
   def registered_company_job
@@ -63,32 +64,34 @@ class JobsController < ApplicationController
     @company =  params[:company_id]
     @job.company_id = @company
     authorize @job
-      if params[:previewButt] == "Preview"
-        flash[:alert] = "This is a PREVIEW of your job posting. Go back to the previous tab to Post the job or make edits."
-        render :create
-      elsif params[:createButt] == "Submit"
-        @job.save
+    if params[:previewButt] == "Preview"
+      flash[:alert] = "This is a PREVIEW of your job posting. Go back to the previous tab to Post the job or make edits."
+      render :create
+    else params[:createButt] == "Submit"
+      if @job.save
         flash[:notice] = "Congrats on successfully posting a job!"
         redirect_to company_job_path(@company, @job)
       else
         render :new
       end
+    end
   end
 
   def unregistered_company_job
     @job = Job.new(job_params)
     authorize @job
-      if params[:previewButt] == "Preview"
-        flash[:alert] = "This is a PREVIEW of your job posting. Go back to the previous tab to Post the job or make edits."
-        render :create
-      elsif
-        params[:createButt] == "Submit"
-        @job.save
-        flash[:notice] = "Congrats on successfully posting a job!"
-        redirect_to @job
+    @job.unregistered_company_validation = true
+    if params[:previewButt] == "Preview"
+      flash[:alert] = "This is a PREVIEW of your job posting. Go back to the previous tab to Post the job or make edits."
+      render :create
+    else params[:createButt] == "Submit"
+      if @job.save
+         flash[:notice] = "Congrats on successfully posting a job!"
+         redirect_to @job
       else
-        render :new
+         render :new
       end
+    end
   end
 
 

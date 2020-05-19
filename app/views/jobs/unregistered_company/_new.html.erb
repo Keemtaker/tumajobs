@@ -7,14 +7,14 @@
     <div class="form-group">
       <label class="col-md-1 control-label"></label>
       <div class="col-md-9">
-        <%= f.input :unregistered_company_name,  :label => "Company name" %>
+        <%= f.input :unregistered_company_name,  :label => "Company name", required: true %>
       </div>
     </div>
 
     <div class="form-group">
       <label class="col-md-1 control-label"></label>
       <div class="col-md-9">
-        <%= f.input :unregistered_company_email,  :label => "Company Contact Email" %>
+        <%= f.input :unregistered_company_email,  :label => "Contact Email", required: true %>
       </div>
     </div>
 
@@ -23,7 +23,7 @@
     <div class="form-group">
       <label class="col-md-1 control-label"></label>
       <div class="col-md-9">
-        <%= f.input :unregistered_company_logo, input_html: { class: 'd-none', id: 'logo-input' }, label_html: { class: 'upload-logo'}, label: '📷 Upload a company logo' %>
+        <%= f.input :unregistered_company_logo, input_html: { class: 'd-none', id: 'logo-input' }, label_html: { class: 'upload-logo'}, label: '📷 Upload a company logo (recommended but optional)' %>
         <%= f.input :unregistered_company_logo_cache, as: :hidden %>
         <%= image_tag "", width: 100, id: "logo-preview" %>
       </div>
@@ -32,7 +32,7 @@
     <br>
     <h1>Perks & Benefits</h1>
     <br>
-    <p1 class="lead">Select perks and benefits that your company offers to employees</p1>
+    <p1 class="lead">Select perks and benefits that your company offers to employees (optional)</p1>
     <br>
     <br>
     <div class="form-group">

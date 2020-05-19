@@ -6,11 +6,11 @@ class JobPolicy < ApplicationPolicy
   end
 
   def create?
-    if user
-      record.company.user == user
-    else
+    # if user
+    #   record.company.user == user
+    # else
       return true
-    end
+    # end
   end
 
   def show?
