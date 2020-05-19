@@ -1,6 +1,6 @@
 <div class="card">
   <div class="job-card">
-    <% if @job.unregistered_company_logo? %>
+    <% if @job.company.logo? %>
       <%= image_tag @job.company.logo_url, class: "show-logo" %>
     <% else %>
       <%= image_tag "fallback.png", class: "show-logo" %>
