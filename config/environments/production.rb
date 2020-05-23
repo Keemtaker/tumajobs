@@ -45,7 +45,7 @@ Rails.application.configure do
   }
 
 
-  config.action_mailer.default_url_options = { host: 'https://tumajobs.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'https://tumajobs.com' }
 
 
 
