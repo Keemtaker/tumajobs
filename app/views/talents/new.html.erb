@@ -1,0 +1,40 @@
+<%= simple_form_for @talent, :url => job_talents_path(@job, @talent), :method => :post do |f| %>
+  <div class="container">
+    <div class="form-group">
+      <label class="col-md-1 control-label"></label>
+      <div class="col-md-6">
+        <%= f.input :full_name,  :label => "Full name" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-1 control-label"></label>
+      <div class="col-md-6">
+        <%= f.input :email,  :label => "Email" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-1 control-label"></label>
+      <div class="col-md-6">
+        <%= f.input :mobile_number,  :label => "Mobile Number" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-1 control-label"></label>
+      <div class="col-md-6">
+        <%= f.input :resume %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-1 control-label"></label>
+      <div class="col-md-6">
+        <%= f.input :cover_letter %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-1 control-label"></label>
+      <div class="col-md-4">
+        <%= f.submit 'Submit Application', class: "btn btn-md btn-block btn-success" %>
+      </div>
+    </div>
+  </div>
+<% end %>
