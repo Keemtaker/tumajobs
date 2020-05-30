@@ -19,11 +19,6 @@ class TalentsController < ApplicationController
     end
   end
 
-  # def show
-  #   @talent = Talent.find(params[:id])
-  # end
-
-
   private
 
   def talent_params
