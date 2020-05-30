@@ -7,9 +7,9 @@ class Job < ApplicationRecord
   has_many :job_perks
   has_many :perks, through: :job_perks, dependent: :destroy
   has_many :talents, dependent: :destroy
-
   has_rich_text :description
-  mount_uploader :unregistered_company_logo, LogoUploader
+  mount_uploader :unregistered_company_logo, JobUploader
+
 
   validates :title, presence: true
   validates :description, presence: true
