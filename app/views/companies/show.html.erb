@@ -25,4 +25,34 @@
   <% end %>
 
   <%= render "companies/shared_forms/show_create" %>
+
+  <% if @company.jobs.any? %>
+    <br>
+    <br>
+    <h2>Jobs at <%= @company.name %></h2>
+    <br>
+    <% @company.jobs.each do |job| %>
+      <%= link_to company_job_path(job.company, job) do %>
+        <div class="job-bar">
+          <div class="logo">
+            <% if job.company.logo? %>
+              <%= image_tag job.company.logo_url, class: "company-logo" %>
+            <% else %>
+              <%= image_tag "fallback.png", class: "show-logo" %>
+            <% end %>
+          </div>
+          <div class="text">
+            <div class="job-title">
+              <%= job.title %>
+            </div>
+            <span>
+              <h5 class="job-info" style="color: #5DB1D1;"><%= job.company.name %></h5>
+              <h5 class="job-info"><%= job.location %></h5>
+              <h5 class="job-info"><%= job.job_type %></h5>
+            </span>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
