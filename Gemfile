@@ -25,6 +25,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'pundit'
 gem 'mailgun-ruby', '~>1.1.6'
 gem 'bugsnag'
+gem 'sendgrid-ruby'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
