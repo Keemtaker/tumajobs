@@ -1,0 +1,5 @@
+production:
+  secure: true
+  enhance_image_tag: true
+  static_file_support: true
+
