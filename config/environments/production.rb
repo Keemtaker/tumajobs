@@ -38,16 +38,12 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudinary
 
-  config.action_mailer.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
-      :user_name => ENV['SENDGRID_USERNAME'],
-      :password => ENV['SENDGRID_PASSWORD'],
-      :domain => 'em550.tumajobs.com',
-      :address => 'smtp.sendgrid.net',
-      :port => 587,
-      :authentication => :plain,
-      :enable_starttls_auto => true
-    }
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV['MAIL_GUN_API_KEY'],
+    domain: ENV['MAIL_GUN_DOMAIN'],
+    api_host: 'api.eu.mailgun.net'
+  }
 
   config.action_mailer.default_url_options = { host: 'https://tumajobs.com' }
 
