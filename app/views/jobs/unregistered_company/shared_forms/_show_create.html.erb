@@ -11,21 +11,23 @@
   <br>
   <br>
 
-  <div class="col-md-9">
-    <h3>Perks & Benefits at <%= @job.unregistered_company_name %> </h3>
-    <br>
-    <br>
-    <div class="row">
-      <% @job.perks.each do |perk| %>
-        <input style="display: none", class="hidden", type="checkbox", value="<%= perk.id %>" name="company[perk_ids][]" id="company_perk_ids_<%= perk.id %>"/>
-        <div class="col-md-4 perk-choices">
-          <label class="perk-choice" for="company_perk_ids_<%= perk.id %>">
-            <i class="<%= perk.icon %>" aria-hidden="true"></i>
-            <br>
-            <%= perk.name %>
-          </label>
-        </div>
-      <% end %>
+  <% if @job.perks.any? %>
+    <div class="col-md-9">
+      <h3>Perks & Benefits at <%= @job.unregistered_company_name %> </h3>
+      <br>
+      <br>
+      <div class="row">
+        <% @job.perks.each do |perk| %>
+          <input style="display: none", class="hidden", type="checkbox", value="<%= perk.id %>" name="company[perk_ids][]" id="company_perk_ids_<%= perk.id %>"/>
+          <div class="col-md-4 perk-choices">
+            <label class="perk-choice" for="company_perk_ids_<%= perk.id %>">
+              <i class="<%= perk.icon %>" aria-hidden="true"></i>
+              <br>
+              <%= perk.name %>
+            </label>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
