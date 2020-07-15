@@ -52,10 +52,15 @@
 }
 
 .job-info {
-  display: inline-block;
   font-size: 13px;
   color: #9DA3AF;
   font-weight: 500;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.job-info:before {
+    content:"• ";
 }
 
 
