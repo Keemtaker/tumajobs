@@ -22,6 +22,7 @@
     </div>
   </div>
   <br>
+
   <div class="col-md-10">
     <% if @job.job_email? %>
       <%= link_to "Quick Apply", new_job_talent_path(@job), class: "btn btn-success btn-lg" %>
@@ -30,6 +31,7 @@
     <% end %>
   </div>
   <br>
+
   <%= render "jobs/unregistered_company/shared_forms/show_create" %>
 </div>
 
