@@ -1,23 +1,34 @@
-<div class="card">
-  <div class="job-card">
-    <% if @company.logo? %>
-      <%= image_tag @company.logo_url, class: "show-logo" %>
-    <% else %>
-      <%= image_tag "fallback.png", class: "show-logo" %>
-    <% end %>
-    <h1><%= @company.name %></h1>
-    <h3 style="color: #5DB1D1";><%= @company.location %></h3>
-    <h3><%= @company.address %></h3>
-  </div>
-</div>
-
-<% if policy(@company).edit? %>
-  <div style="padding: 10px; background-color: white;" class="text-center">
-    <%= link_to "Post a job", new_company_job_path(@company),  class: "btn btn-success btn-lg" %>
-  </div>
-<% end %>
-
+<br>
+<br>
 <div class="container">
+  <div class="card bg-transparent text-center" style="border: none !important;">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-2" style="margin-bottom: 30px;">
+          <% if @company.logo?  %>
+            <%= image_tag @company.logo_url, class: "show-logo" %>
+          <% else %>
+            <%= image_tag "fallback.png", class: "show-logo" %>
+          <% end %>
+        </div>
+        <div class="col-sm-8">
+          <h1><%= @company.name %></h1>
+          <span class="job-info">
+            <h3 style="color: #5DB1D1;"><%= @company.location %></h3>
+            <h3><%= @company.address %></h3>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <% if policy(@company).edit? %>
+    <div style="padding: 10px; background-color: white;" class="text-center">
+      <%= link_to "Post a job", new_company_job_path(@company),  class: "btn btn-success btn-lg" %>
+    </div>
+  <% end %>
+
   <% if policy(@company).edit? %>
     <div class="col-md-3", style="margin-top: 40px;">
       <%= link_to "Edit company profile", edit_company_path(@company),  class: "btn btn-md btn-block btn-outline-primary"%>
@@ -33,23 +44,25 @@
     <br>
     <% @company.jobs.each do |job| %>
       <%= link_to company_job_path(job.company, job) do %>
-        <div class="job-bar">
-          <div class="logo">
-            <% if job.company.logo? %>
-              <%= image_tag job.company.logo_url, class: "company-logo" %>
-            <% else %>
-              <%= image_tag "fallback.png", class: "show-logo" %>
-            <% end %>
-          </div>
-          <div class="text">
-            <div class="job-title">
-              <%= job.title %>
+        <div class="card" style="margin-bottom: 30px;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-2" style="align-self: center;">
+                  <% if job.company.logo? %>
+                    <%= image_tag job.company.logo_url, class: "show-logo" %>
+                  <% else %>
+                    <%= image_tag "fallback.png", class: "show-logo" %>
+                  <% end %>
+              </div>
+              <div class="col-sm-8" style="margin-top: 15px;">
+                <h5><%= job.title %></h5>
+                <span class="job-info">
+                  <h5 style="color: #5DB1D1;"><%= job.company.name %></h5>
+                  <h5><%= job.location %></h5>
+                  <h5><%= job.job_type %></h5>
+                </span>
+              </div>
             </div>
-            <span>
-              <h5 class="job-info" style="color: #5DB1D1;"><%= job.company.name %></h5>
-              <h5 class="job-info"><%= job.location %></h5>
-              <h5 class="job-info"><%= job.job_type %></h5>
-            </span>
           </div>
         </div>
       <% end %>

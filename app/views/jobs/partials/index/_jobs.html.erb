@@ -3,46 +3,49 @@
     <% if job.company %>
 
       <%= link_to company_job_path(job.company, job) do %>
-        <div class="job-bar">
-          <div class="logo">
-            <% if job.company.logo? %>
-              <%= image_tag job.company.logo_url, class: "company-logo" %>
-            <% else %>
-              <%= image_tag "fallback.png", class: "show-logo" %>
-            <% end %>
-          </div>
-          <div class="text">
-            <div class="job-title">
-              <%= job.title %>
+        <div class="card" style="margin-bottom: 30px;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-2" style="align-self: center;">
+                  <% if job.company.logo? %>
+                    <%= image_tag job.company.logo_url, class: "show-logo" %>
+                  <% else %>
+                    <%= image_tag "fallback.png", class: "show-logo" %>
+                  <% end %>
+              </div>
+              <div class="col-sm-8" style="margin-top: 15px;">
+                <h5><%= job.title %></h5>
+                <span class="job-info">
+                  <h5 style="color: #5DB1D1;"><%= job.company.name %></h5>
+                  <h5><%= job.location %></h5>
+                  <h5><%= job.job_type %></h5>
+                </span>
+              </div>
             </div>
-            <span>
-              <h5 class="job-info" style="color: #5DB1D1;"><%= job.company.name %></h5>
-              <h5 class="job-info"><%= job.location %></h5>
-              <h5 class="job-info"><%= job.job_type %></h5>
-            </span>
           </div>
         </div>
       <% end %>
-
     <% else %>
       <%= link_to job_path(job) do %>
-        <div class="job-bar">
-          <div class="logo">
-            <% if job.unregistered_company_logo? %>
-              <%= image_tag job.unregistered_company_logo_url, class: "company-logo" %>
-            <% else %>
-              <%= image_tag "fallback.png", class: "show-logo" %>
-            <% end %>
-          </div>
-          <div class="text">
-            <div class="job-title">
-              <%= job.title %>
+        <div class="card" style="margin-bottom: 30px;">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-2" style="align-self: center;">
+                  <% if job.unregistered_company_logo? %>
+                    <%= image_tag job.unregistered_company_logo_url, class: "show-logo" %>
+                  <% else %>
+                    <%= image_tag "fallback.png", class: "show-logo" %>
+                  <% end %>
+              </div>
+              <div class="col-sm-8" style="margin-top: 15px;">
+                <h5><%= job.title %></h5>
+                <span class="job-info">
+                  <h5 style="color: #5DB1D1;"><%= job.unregistered_company_name %></h5>
+                  <h5><%= job.location %></h5>
+                  <h5><%= job.job_type %></h5>
+                </span>
+              </div>
             </div>
-            <span>
-              <h5 class="job-info" style="color: #5DB1D1;"><%= job.unregistered_company_name %></h5>
-              <h5 class="job-info"><%= job.location %></h5>
-              <h5 class="job-info"><%= job.job_type %></h5>
-            </span>
           </div>
         </div>
       <% end %>

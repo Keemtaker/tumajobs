@@ -51,11 +51,29 @@
   font-weight: 500;
 }
 
-.job-info {
+
+.job-info h3 {
+  font-size: 16px;
+  color: #9DA3AF;
+  font-weight: 500;
+  margin-right: 5px;
   display: inline-block;
+}
+
+.job-info h3:before {
+    content:"• ";
+}
+
+.job-info h5 {
   font-size: 13px;
   color: #9DA3AF;
   font-weight: 500;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.job-info h5:before {
+    content:"• ";
 }
 
 
