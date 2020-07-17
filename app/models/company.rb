@@ -16,5 +16,4 @@ class Company < ApplicationRecord
     def send_company_account_confirmation
        CompanyMailer.company_account_confirmation(self).deliver_now
     end
-
 end
