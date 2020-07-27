@@ -14,21 +14,6 @@
   <div class="row text-center justify-content-around">
     <div class="col-md-5 card box-shadow mb-4">
       <div class="card-header">
-        <h4 class="my-0 font-weight-normal" style="color: #1EDD88">Registered Account Job</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">Free</h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>Sign-up Required</li>
-          <li>Unlimited Job Postings</li>
-          <li>Company Profile</li>
-          <li>40 days Job duration</li>
-        </ul>
-        <%= link_to "Get started for free", new_user_registration_path, class: "btn btn-lg btn-block btn-outline-success" %>
-      </div>
-    </div>
-    <div class="col-md-5 card box-shadow mb-4">
-      <div class="card-header">
         <h4 class="my-0 font-weight-normal" style="color: #167FFB">Quick Job</h4>
       </div>
       <div class="card-body">
@@ -42,9 +27,25 @@
         <% if current_user %>
           <%= link_to "Log out and Use Quick job option", destroy_user_session_path, method: 'delete', class: "btn btn-lg btn-block btn-outline-primary" %>
         <% else %>
-          <%= link_to "Get started for free", new_job_path, class: "btn btn-lg btn-block btn-outline-primary" %>
+          <%= link_to "Post Unlimited Jobs for free", new_job_path, class: "btn btn-lg btn-block btn-outline-primary" %>
         <% end %>
       </div>
     </div>
+    <div class="col-md-5 card box-shadow mb-4">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal" style="color: #1EDD88">Registered Account Job</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">Free</h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Sign-up Required</li>
+          <li>Unlimited Job Postings</li>
+          <li>Company Profile</li>
+          <li>40 days Job duration</li>
+        </ul>
+        <%= link_to "Post Unlimited Jobs for free", new_user_registration_path, class: "btn btn-lg btn-block btn-outline-success" %>
+      </div>
+    </div>
+
   </div>
 </div>

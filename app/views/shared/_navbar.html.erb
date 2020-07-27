@@ -8,9 +8,9 @@
   </button>
 
   <% if current_user && current_user.company && current_user.company.id %>
-    <%= link_to "Post a Job", new_company_job_path(current_user.company), class: "btn btn-success job-button" %>
+    <%= link_to "Post Jobs for free", new_company_job_path(current_user.company), class: "btn btn-success job-button" %>
   <% else %>
-    <%= link_to "Post a Job", pricing_path, class: "btn btn-success job-button" %>
+    <%= link_to "Post Jobs for free", pricing_path, class: "btn btn-success job-button" %>
   <% end %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
