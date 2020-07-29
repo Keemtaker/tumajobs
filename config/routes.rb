@@ -17,6 +17,6 @@ Rails.application.routes.draw do
   end
 
   get 'about', to: "static_pages#about"
-  get 'pricing', to: "static_pages#pricing"
+  get 'post_job', to: "static_pages#post_job"
 
 end
