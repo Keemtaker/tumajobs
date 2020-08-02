@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_112231) do
+ActiveRecord::Schema.define(version: 2020_08_02_140035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_112231) do
     t.string "job_email"
     t.string "job_url"
     t.string "unregistered_company_email"
+    t.string "slug"
     t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
