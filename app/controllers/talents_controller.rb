@@ -2,6 +2,11 @@ class TalentsController < ApplicationController
   skip_before_action :authenticate_user!
   skip_after_action :verify_authorized
 
+  def index
+    redirect_to new_job_talent_path
+    skip_policy_scope
+  end
+
   def new
     @job = Job.find(params[:job_id])
     @talent = @job.talents.new
