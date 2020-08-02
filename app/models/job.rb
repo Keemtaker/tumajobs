@@ -1,7 +1,11 @@
 class Job < ApplicationRecord
   after_create :send_job_post_confirmation
   attr_accessor :unregistered_company_validation
+  after_validation :set_slug, only: [:create, :update]
 
+  def to_param
+    "#{id}-#{slug}"
+  end
 
   belongs_to :company, optional: true
   has_many :job_perks
@@ -28,4 +32,7 @@ class Job < ApplicationRecord
      JobMailer.job_post_confirmation(self).deliver_now
   end
 
+  def set_slug
+    self.slug = title.to_s.parameterize
+  end
 end
