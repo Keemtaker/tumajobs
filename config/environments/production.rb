@@ -38,12 +38,15 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudinary
 
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-    api_key: ENV['MAIL_GUN_API_KEY'],
-    domain: ENV['MAIL_GUN_DOMAIN'],
-    api_host: 'api.eu.mailgun.net'
-  }
+  ActionMailer::Base.smtp_settings = {
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: 'gmail.com',
+  user_name: ENV['GMAIL_ADDRESS'],
+  password: ENV['GMAIL_APP_PASSWORD'],
+  authentication: :login,
+  enable_starttls_auto: true
+}
 
   config.action_mailer.default_url_options = { host: 'https://tumajobs.com' }
 
