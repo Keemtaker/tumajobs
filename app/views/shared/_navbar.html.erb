@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to jobs_path, class: "navbar-brand" do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png" %>
   <% end %>
 
@@ -8,9 +8,9 @@
   </button>
 
   <% if current_user && current_user.company && current_user.company.id %>
-    <%= link_to "Post Jobs for free", new_company_job_path(current_user.company), class: "btn btn-success job-button" %>
+    <%= link_to "Post a Job for GH₵100", new_company_job_path(current_user.company), class: "btn btn-success job-button" %>
   <% else %>
-    <%= link_to "Post Jobs for free", post_job_path, class: "btn btn-success job-button" %>
+    <%= link_to "Post a Job for GH₵100", new_job_path, class: "btn btn-success job-button" %>
   <% end %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
