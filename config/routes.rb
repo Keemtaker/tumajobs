@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :talents
   end
 
+  get 'home', to: "static_pages#home"
   get 'about', to: "static_pages#about"
   get 'post_job', to: "static_pages#post_job"
 
