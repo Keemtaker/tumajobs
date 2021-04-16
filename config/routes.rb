@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root :to => 'companies#new', as: :authenticated_root
   end
-  root to: 'jobs#index'
+  root to: 'static_pages#home'
 
   devise_for :users
 
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :talents
   end
 
+  get 'home', to: "static_pages#home"
   get 'about', to: "static_pages#about"
   get 'post_job', to: "static_pages#post_job"
 
