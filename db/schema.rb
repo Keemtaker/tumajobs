@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_02_140035) do
+ActiveRecord::Schema.define(version: 2021_04_30_145911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,8 @@ ActiveRecord::Schema.define(version: 2020_08_02_140035) do
     t.string "job_url"
     t.string "unregistered_company_email"
     t.string "slug"
+    t.string "transaction_reference"
+    t.boolean "payment_completed", default: false
     t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
