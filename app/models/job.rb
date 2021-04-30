@@ -26,6 +26,10 @@ class Job < ApplicationRecord
   validates :unregistered_company_name, presence: true, if: -> { unregistered_company_validation }
   validates :unregistered_company_email, presence: true, if: -> { unregistered_company_validation }, format: Devise.email_regexp
 
+  def generate_unique_secure_token
+    SecureRandom.base58(24)
+  end
+
   private
 
   def send_job_post_confirmation
