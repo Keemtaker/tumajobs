@@ -1,5 +1,6 @@
 class Job < ApplicationRecord
-  after_create :send_job_post_confirmation
+  # after_create :send_job_post_confirmation
+  after_create :generate_unique_secure_token
   attr_accessor :unregistered_company_validation
   after_validation :set_slug, only: [:create, :update]
 
@@ -27,7 +28,8 @@ class Job < ApplicationRecord
   validates :unregistered_company_email, presence: true, if: -> { unregistered_company_validation }, format: Devise.email_regexp
 
   def generate_unique_secure_token
-    SecureRandom.base58(24)
+    transaction_reference_value = SecureRandom.base58(24)
+    self.update(transaction_reference: transaction_reference_value)
   end
 
   private
