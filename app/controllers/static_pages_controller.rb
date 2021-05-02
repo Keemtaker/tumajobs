@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
   skip_after_action :verify_authorized
 
   def home
-    @jobs = Job.all.limit(5).order("id DESC")
+    @jobs = Job.where("payment_completed = true").limit(5).order("id DESC")
   end
 
   def about

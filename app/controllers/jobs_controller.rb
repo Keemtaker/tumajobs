@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :create, :new, :success]
 
   def index
-    @search = Job.ransack(params[:q])
+    @search = Job.where("payment_completed = true").ransack(params[:q])
     @jobs = policy_scope(Job)
     @jobs = @search.result(distinct: true).order("id DESC")
   end
