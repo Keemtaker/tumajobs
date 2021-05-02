@@ -44,6 +44,14 @@
 <div class="form-group">
   <label class="col-md-1 control-label"></label>
   <div class="col-md-9">
+    <%= f.input :job_expiration_date, as: :date, html5: true, input_html: { value: (Time.now + 60.days).strftime('%Y-%m-%d'), min: Time.now.strftime('%Y-%m-%d'),
+    max: (Time.now + 120.days).strftime('%Y-%m-%d')}, :label => "Expiration of job posting"  %>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-1 control-label"></label>
+  <div class="col-md-9">
     <%= f.input :job_application_type, as: :radio_buttons, collection: [['Apply By Email', 'Email', checked: true ], ['Apply By Url', 'Url' ]], :label => "How should job seekers apply for the job?" %>
   </div>
 </div>
