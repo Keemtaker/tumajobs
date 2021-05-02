@@ -34,9 +34,9 @@ class Job < ApplicationRecord
 
   private
 
-  def send_job_post_confirmation
-     JobMailer.job_post_confirmation(self).deliver_now
-  end
+  # def send_job_post_confirmation
+  #    JobMailer.job_post_confirmation(self).deliver_now
+  # end
 
   def set_slug
     self.slug = title.to_s.parameterize

@@ -57,6 +57,7 @@ class JobsController < ApplicationController
       job.update(payment_completed: true)
       redirect_to job_path(job)
       flash[:notice] = "Congrats on successfully posting a job!"
+      JobMailer.job_post_confirmation(job).deliver_now
     else
       redirect_to root_path
       flash[:alert] = "The Job posting did not complete successfully. Kindly contact us at tumacareers@gmail.com for support"
