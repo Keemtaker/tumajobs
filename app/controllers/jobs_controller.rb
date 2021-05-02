@@ -57,6 +57,7 @@ class JobsController < ApplicationController
       job.update(payment_completed: true)
       redirect_to job_path(job)
       flash[:notice] = "Congrats on successfully posting a job!"
+      JobMailer.job_post_confirmation(job).deliver_now
     else
       redirect_to root_path
       flash[:alert] = "The Job posting did not complete successfully. Kindly contact us at tumacareers@gmail.com for support"
@@ -114,7 +115,7 @@ class JobsController < ApplicationController
       "tx_ref": @job.transaction_reference,
       "amount": "1",
       "currency": "GHS",
-      "redirect_url": "#{ENV['FLUTTERWAVE_REDIRECT']}/success",
+      "redirect_url": "https://fa786cdbe524.ngrok.io/success",
       "payment_options":["mobilemoney", "card"],
       "meta":{
         "job_id": @job.id,
