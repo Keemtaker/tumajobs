@@ -115,7 +115,7 @@ class JobsController < ApplicationController
       "tx_ref": @job.transaction_reference,
       "amount": "1",
       "currency": "GHS",
-      "redirect_url": "https://fa786cdbe524.ngrok.io/success",
+      "redirect_url": "#{ENV['FLUTTERWAVE_REDIRECT']}/success",
       "payment_options":["mobilemoney", "card"],
       "meta":{
         "job_id": @job.id,
