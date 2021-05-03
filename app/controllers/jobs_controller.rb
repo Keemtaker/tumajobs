@@ -127,7 +127,7 @@ class JobsController < ApplicationController
       },
       "customizations":{
         "title": "Tumajobs",
-        "logo": ActionController::Base.helpers.image_tag("logo.png")
+        "logo": "https://res.cloudinary.com/hbgbweyhq/image/upload/v1620037964/favicon_sqziot.png"
       }
     }
 
@@ -139,7 +139,6 @@ class JobsController < ApplicationController
       flash[:alert] = "Something went wrong. Kindly try to post the job again or contact tumacareers@gmail.com for support"
     end
   end
-ENV['GMAIL_ADDRESS']
 
   def job_params
     params.require(:job).permit(:title, :description, :role, :job_type, :keywords, :salary, :location, :company_id, :unregistered_company_name, :unregistered_company_logo,
