@@ -15,11 +15,12 @@ Rails.application.routes.draw do
   resources :jobs do
     resources :talents
   end
+  post 'job/flutterwave_webhook', to: 'jobs#flutterwave_webhook'
+
 
   get 'success', to: 'jobs#success'
 
   get 'home', to: "static_pages#home"
   get 'about', to: "static_pages#about"
   get 'post_job', to: "static_pages#post_job"
-
 end

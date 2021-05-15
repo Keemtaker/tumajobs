@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :create, :new, :success]
+  skip_before_action :authenticate_user!, only: [:index, :show, :create, :new, :success, :flutterwave_webhook]
+  protect_from_forgery :except => :flutterwave_webhook
 
   def index
     @search = Job.where("payment_completed = true").ransack(params[:q])
@@ -57,10 +58,20 @@ class JobsController < ApplicationController
       job.update(payment_completed: true)
       redirect_to job_path(job)
       flash[:notice] = "Congrats on successfully posting a job!"
-      JobMailer.job_post_confirmation(job).deliver_now
     else
       redirect_to root_path
-      flash[:alert] = "The Job posting did not complete successfully. Kindly contact us at tumacareers@gmail.com for support"
+      flash[:alert] = "The Job posting did not complete successfully. Kindly contact us at #{ENV['GMAIL_ADDRESS']} for support"
+    end
+  end
+
+  def flutterwave_webhook
+    skip_authorization
+    require "json"
+    request_json = JSON.parse(request.body.read)
+    if request_json["status"] == "successful"
+      job = Job.find_by(transaction_reference: request_json["txRef"])
+      job.update(payment_completed: true)
+      JobMailer.job_post_confirmation(job).deliver_now
     end
   end
 
@@ -136,7 +147,7 @@ class JobsController < ApplicationController
       redirect_to response["data"]["link"]
     else
       render :new
-      flash[:alert] = "Something went wrong. Kindly try to post the job again or contact tumacareers@gmail.com for support"
+      flash[:alert] = "Something went wrong. Kindly try to post the job again or contact #{ENV['GMAIL_ADDRESS']} for support"
     end
   end
 
