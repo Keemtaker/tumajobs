@@ -124,7 +124,7 @@ class JobsController < ApplicationController
   def flutterwave_standard_payment
     payment_details = {
       "tx_ref": @job.transaction_reference,
-      "amount": "50",
+      "amount": "25",
       "currency": "GHS",
       "redirect_url": "#{ENV['FLUTTERWAVE_REDIRECT']}/success",
       "payment_options":["mobilemoney", "card"],

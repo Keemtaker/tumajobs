@@ -8,9 +8,9 @@
   </button>
 
   <% if current_user && current_user.company && current_user.company.id %>
-    <%= link_to "Post a Job for GH₵50", new_company_job_path(current_user.company), class: "btn btn-success job-button" %>
+    <%= link_to "Post a Job for only GH₵25", new_company_job_path(current_user.company), class: "btn btn-success job-button" %>
   <% else %>
-    <%= link_to "Post a Job for GH₵50", new_job_path, class: "btn btn-success job-button" %>
+    <%= link_to "Post a Job for only GH₵25", new_job_path, class: "btn btn-success job-button" %>
   <% end %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
